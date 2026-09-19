@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Расчётные параметры — Cenozoic</title>
+<meta name="description" content="Меню «Параметры» и «Большой колодец»: более 15 гидрогеологических функций одним кликом, без поиска формул, с мастером аргументов.">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="icon" href="assets/img/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#123626">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav is-light">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo.png" alt="Cenozoic">
+      <span class="brand-word">CENOZOIC</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Главная</a>
+      <a href="product.html">Модули</a>
+      <a href="pricing.html">Тарифы</a>
+      <a href="company.html">Компания</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="company.html#contact" class="btn btn-dark btn-sm btn-sm-hide">Написать нам</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+        <span data-icon="menu" style="width:20px;height:20px;display:block"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="crumb"><a href="index.html">Cenozoic</a><span data-icon="chevron-right" style="width:13px;height:13px"></span><a href="product.html">Модули</a><span data-icon="chevron-right" style="width:13px;height:13px"></span><span>Расчётные параметры</span></div>
+    <h1>Расчётные параметры</h1>
+    <p>Группа «Расчётные параметры» объединяет два меню: «Параметры» — библиотеку готовых гидрогеологических функций, и «Большой колодец» — расчёты условной схематизации групповых водозаборов.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="split reveal" id="params-menu">
+      <div class="col-text">
+        <span class="kicker">Меню «Параметры»</span>
+        <h2 style="font-size:clamp(22px,3vw,30px)">Без поиска формул</h2>
+        <p class="muted" style="margin-top:14px;line-height:1.6">Пользователь выбирает функцию по названию параметра, а не вспоминает синтаксис. 10 функций в одном меню: водопроводимость, уровнепроводность, коэффициенты фильтрации слоистой толщи и другие — всё в одном клике. Выбор пункта меню вставляет функцию в активную ячейку и сразу открывает мастер аргументов.</p>
+      </div>
+      <div class="col-media">
+        <div class="shot-frame"><img src="assets/img/screens/params-menu.png" alt="Меню «Параметры» на ленте Excel со списком гидрогеологических функций"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="on-paper-dim">
+  <div class="container">
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr><th>Функция</th><th>Что вычисляет</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Водопроводимость T</td><td>Основной фильтрационный параметр водоносного пласта</td></tr>
+          <tr><td>Уровнепроводность a</td><td>Скорость распространения возмущения уровня в безнапорном пласте</td></tr>
+          <tr><td>Пьезопроводность a*</td><td>Скорость распространения возмущения давления в напорном пласте</td></tr>
+          <tr><td>Коэффициент упругой водоотдачи μ*</td><td>Ёмкостный параметр напорного пласта</td></tr>
+          <tr><td>Параметр перетекания B</td><td>Характеристика перетекания через разделяющий слой (однопластовая схема)</td></tr>
+          <tr><td>Параметр перетекания B (два пласта)</td><td>Та же характеристика для схемы с двумя взаимодействующими пластами</td></tr>
+          <tr><td>Средний Кф анизотропного пласта</td><td>Осреднённый коэффициент фильтрации с учётом анизотропии</td></tr>
+          <tr><td>Приведённый Кф слоистой толщи (гор.)</td><td>Эквивалентный коэффициент фильтрации по горизонтали для слоистой толщи</td></tr>
+          <tr><td>Приведённый Кф слоистой толщи (верт.)</td><td>Эквивалентный коэффициент фильтрации по вертикали для слоистой толщи</td></tr>
+          <tr><td>Плотность</td><td>Плотность породы/флюида по исходным данным</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="split reverse reveal">
+      <div class="col-media">
+        <div class="shot-frame"><img src="assets/img/screens/argument-wizard.png" alt="Мастер аргументов при вставке функции в Excel"></div>
+      </div>
+      <div class="col-text">
+        <span class="kicker">Мастер аргументов</span>
+        <h2 style="font-size:clamp(22px,3vw,30px)">Формула и подсказки по ошибкам — в одном окне</h2>
+        <p class="muted" style="margin-top:14px;line-height:1.6">Выбор пункта меню вставляет функцию в ячейку и сразу открывает диалог аргументов — с формулой и подсказками, если введённые данные не проходят проверку. Инженеру не нужно помнить синтаксис или искать документацию: он последовательно заполняет понятные поля.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="on-paper-dim" id="big-well">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Меню «Большой колодец»</span>
+      <h2>Расчёт условной схематизации группового водозабора</h2>
+      <p>Функции расчёта радиуса «большого колодца», условий корректности схематизации и координат центра тяжести системы скважин.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card reveal">
+        <div class="icon-badge" data-icon="circle-dot"></div>
+        <h3>Радиус большого колодца</h3>
+        <hr>
+        <ul class="check-list">
+          <li><span data-icon="check-circle"></span>Линейный ряд / линейная дрена</li>
+          <li><span data-icon="check-circle"></span>Площадная система (L/B &gt; 3)</li>
+          <li><span data-icon="check-circle"></span>Прямоугольная (вытянутый прямоугольник)</li>
+          <li><span data-icon="check-circle"></span>Кольцевая / круг</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="icon-badge" data-icon="shield"></div>
+        <h3>Условие корректности схематизации</h3>
+        <hr>
+        <ul class="check-list">
+          <li><span data-icon="check-circle"></span>Неограниченный в плане пласт</li>
+          <li><span data-icon="check-circle"></span>Ограниченный в плане пласт</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="icon-badge" data-icon="target"></div>
+        <h3>Координаты центра тяжести</h3>
+        <hr>
+        <ul class="check-list">
+          <li><span data-icon="check-circle"></span>Прямой расчёт по координатам скважин группового водозабора</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="container">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Дальше — оценка запасов и водопритоков</h2>
+        <p>24 и 23 типовые гидродинамические схемы для подземных вод и притоков в горные выработки.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="reserves-inflow.html" class="btn btn-primary">Смотреть модуль</a>
+        <a href="product.html" class="btn btn-ghost-dark">Все модули</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.png" alt="Cenozoic">
+          <span class="brand-word">CENOZOIC</span>
+        </a>
+        <p>Инженерный софт для гидрогеологического моделирования, изысканий, мониторинга подземных вод и оценки притоков.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Продукт</h5>
+        <ul>
+          <li><a href="product.html">Все модули</a></li>
+          <li><a href="parameters.html">Расчётные параметры</a></li>
+          <li><a href="reserves-inflow.html">Запасы и водопритоки</a></li>
+          <li><a href="tools.html">Инструменты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Компания</h5>
+        <ul>
+          <li><a href="company.html">О компании</a></li>
+          <li><a href="pricing.html">Тарифы</a></li>
+          <li><a href="company.html#contact">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Продукты Cenozoic</h5>
+        <ul>
+          <li><a href="product.html">HydroCore (xlam)</a></li>
+          <li><a href="company.html">HydroPro (C#) — в разработке</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Cenozoic. Прототип продукта.</span>
+      <span>Белград, Сербия · Санкт-Петербург, Россия</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

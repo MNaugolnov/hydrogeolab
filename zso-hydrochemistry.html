@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ЗСО и гидрохимия — Cenozoic</title>
+<meta name="description" content="Калькулятор зон санитарной охраны водозабора и оценка химического состава подземных вод по формуле Курлова.">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="icon" href="assets/img/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#123626">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav is-light">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo.png" alt="Cenozoic">
+      <span class="brand-word">CENOZOIC</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Главная</a>
+      <a href="product.html">Модули</a>
+      <a href="pricing.html">Тарифы</a>
+      <a href="company.html">Компания</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="company.html#contact" class="btn btn-dark btn-sm btn-sm-hide">Написать нам</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+        <span data-icon="menu" style="width:20px;height:20px;display:block"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="crumb"><a href="index.html">Cenozoic</a><span data-icon="chevron-right" style="width:13px;height:13px"></span><a href="product.html">Модули</a><span data-icon="chevron-right" style="width:13px;height:13px"></span><span>ЗСО и гидрохимия</span></div>
+    <h1>ЗСО и гидрохимия</h1>
+    <p>Готовые калькуляторы для двух смежных задач: обоснования границ зоны санитарной охраны водозабора и оценки химического состава подземных вод.</p>
+  </div>
+</section>
+
+<!-- ZSO -->
+<section id="zso">
+  <div class="container">
+    <div class="split reveal">
+      <div class="col-text">
+        <span class="kicker">Зоны санитарной охраны</span>
+        <h2 style="font-size:clamp(22px,3vw,30px)">Калькулятор ЗСО с наглядной схемой</h2>
+        <p class="muted" style="margin-top:14px;line-height:1.6">Форма расчёта ЗСО: ввод параметров водозабора и автоматическое построение схемы зоны санитарной охраны. Поддерживает сосредоточенный и линейный водозабор, с учётом естественного потока и без него.</p>
+        <ul class="check-list" style="margin-top:22px">
+          <li><span data-icon="check-circle"></span>Исходные данные: дебит Q, расчётное время T, коэф. фильтрации k, мощность пласта m, пористость n</li>
+          <li><span data-icon="check-circle"></span>Расчётные параметры: q, x<sub>p</sub>, T̄, R̄, r̄</li>
+          <li><span data-icon="check-circle"></span>Результаты: R — вверх по потоку, r — вниз по потоку, L — длина ЗСО</li>
+          <li><span data-icon="check-circle"></span>Наглядная схема зоны строится по вашим данным</li>
+        </ul>
+      </div>
+      <div class="col-media">
+        <div class="shot-frame"><img src="assets/img/screens/zso-form.png" alt="Калькулятор ЗСО — расчёт зон санитарной охраны со схемой"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HYDROCHEMISTRY -->
+<section class="on-paper-dim" id="hydrochemistry">
+  <div class="container">
+    <div class="split reverse reveal">
+      <div class="col-media">
+        <div class="shot-frame"><img src="assets/img/screens/kurlov-formula.png" alt="Расчёт формулы солевого состава (формула Курлова)"></div>
+      </div>
+      <div class="col-text">
+        <span class="kicker">Гидрохимия</span>
+        <h2 style="font-size:clamp(22px,3vw,30px)">Формула солевого состава (формула Курлова)</h2>
+        <p class="muted" style="margin-top:14px;line-height:1.6">Расчёт минерализации и солевого состава воды по содержанию основных анионов (HCO₃, CO₃, Cl, SO₄) и катионов (Ca, Mg, Na, K) — с готовым текстовым заключением о типе воды и проверкой сходимости анализа.</p>
+        <span class="badge badge-dev" style="margin-top:18px">В разработке — доступно в следующей версии</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">Классификации</span>
+      <h2>Классификации подземных вод</h2>
+      <p>Классификации по различным признакам — минерализации и pH — доступны прямо из меню «Классификации».</p>
+    </div>
+    <div class="grid grid-2">
+      <div class="card reveal">
+        <div class="icon-badge" data-icon="flask"></div>
+        <h3>Тип воды по минерализации</h3>
+        <p class="desc" style="margin-bottom:0">Автоматическое определение типа воды (пресная, солоноватая, солёная и т.д.) по суммарной минерализации.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-badge" data-icon="flask"></div>
+        <h3>Тип воды по pH</h3>
+        <p class="desc" style="margin-bottom:0">Классификация по кислотно-щелочным свойствам подземных вод.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tight on-paper-dim">
+  <div class="container">
+    <div class="cta-band reveal" style="background:linear-gradient(135deg, var(--sage-800), var(--ink-900))">
+      <div>
+        <h2>Дальше — вспомогательные инструменты</h2>
+        <p>Агрегатор данных, перевод координат, номенклатура карт и конвертер размерностей.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="tools.html" class="btn btn-primary">Смотреть инструменты</a>
+        <a href="product.html" class="btn btn-ghost-dark">Все модули</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.png" alt="Cenozoic">
+          <span class="brand-word">CENOZOIC</span>
+        </a>
+        <p>Инженерный софт для гидрогеологического моделирования, изысканий, мониторинга подземных вод и оценки притоков.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Продукт</h5>
+        <ul>
+          <li><a href="product.html">Все модули</a></li>
+          <li><a href="parameters.html">Расчётные параметры</a></li>
+          <li><a href="reserves-inflow.html">Запасы и водопритоки</a></li>
+          <li><a href="tools.html">Инструменты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Компания</h5>
+        <ul>
+          <li><a href="company.html">О компании</a></li>
+          <li><a href="pricing.html">Тарифы</a></li>
+          <li><a href="company.html#contact">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Продукты Cenozoic</h5>
+        <ul>
+          <li><a href="product.html">HydroCore (xlam)</a></li>
+          <li><a href="company.html">HydroPro (C#) — в разработке</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Cenozoic. Прототип продукта.</span>
+      <span>Белград, Сербия · Санкт-Петербург, Россия</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

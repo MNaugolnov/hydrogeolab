@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Оценка запасов и водопритоков — Cenozoic</title>
+<meta name="description" content="24 гидродинамические схемы оценки запасов подземных вод и 23 схемы оценки водопритоков в карьеры и котлованы — прямо на ленте Excel.">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="icon" href="assets/img/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#123626">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav is-light">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo.png" alt="Cenozoic">
+      <span class="brand-word">CENOZOIC</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Главная</a>
+      <a href="product.html">Модули</a>
+      <a href="pricing.html">Тарифы</a>
+      <a href="company.html">Компания</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="company.html#contact" class="btn btn-dark btn-sm btn-sm-hide">Написать нам</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+        <span data-icon="menu" style="width:20px;height:20px;display:block"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="crumb"><a href="index.html">Cenozoic</a><span data-icon="chevron-right" style="width:13px;height:13px"></span><a href="product.html">Модули</a><span data-icon="chevron-right" style="width:13px;height:13px"></span><span>Запасы и водопритоки</span></div>
+    <h1>Оценка запасов и водопритоков</h1>
+    <p>Одна и та же гидродинамическая логика решает две смежные инженерные задачи: оценку эксплуатационных запасов подземных вод и прогноз водопритоков в карьеры, котлованы и горные выработки.</p>
+    <div class="stat-row" style="margin-top:34px">
+      <div class="stat"><strong style="color:#fff">24</strong><span style="color:var(--ink-100)">схемы оценки запасов</span></div>
+      <div class="stat"><strong style="color:#fff">23</strong><span style="color:var(--ink-100)">схемы оценки водопритоков</span></div>
+      <div class="stat"><strong style="color:#fff">5</strong><span style="color:var(--ink-100)">типов расчётных схем пласта</span></div>
+      <div class="stat"><strong style="color:#fff">4</strong><span style="color:var(--ink-100)">функции атмосферных осадков</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVES -->
+<section id="reserves">
+  <div class="container">
+    <div class="split reveal">
+      <div class="col-text">
+        <span class="kicker">Оценка запасов</span>
+        <h2 style="font-size:clamp(22px,3vw,30px)">Дерево типовых расчётных схем</h2>
+        <p class="muted" style="margin-top:14px;line-height:1.6">Типовые схемы для оценки запасов подземных вод — выбор схемы по геологическим условиям, до 4 уровней вложенности меню. Гидродинамический метод: неограниченный пласт, полуограниченный пласт, пласт-полоса, пласт с двумя пересекающимися границами, круговой контур. Каждая схема доступна в напорном и безнапорном варианте.</p>
+      </div>
+      <div class="col-media">
+        <div class="shot-frame"><img src="assets/img/screens/reserves-tree.png" alt="Дерево типовых расчётных схем оценки запасов подземных вод"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="on-paper-dim">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">24 гидродинамические схемы</span>
+      <h2>Матрица расчётных схем оценки запасов</h2>
+      <p>Каждая ячейка — отдельная готовая формула. Мастер аргументов подставит нужные обозначения при вставке.</p>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr><th>Расчётная схема</th><th class="num">Безнапорный пласт</th><th class="num">Напорный пласт</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Неограниченный пласт — изолированный</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Неограниченный пласт — с перетеканием</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Полуограниченный — граница H=const</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Полуограниченный — непроницаемая граница (Q=0)</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-полоса — обе границы H=const</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-полоса — обе границы непроницаемы</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-полоса — одна H=const, другая непроницаема</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-угол (2 границы) — обе H=const</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-угол (2 границы) — обе непроницаемы</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-угол (2 границы) — одна H=const, другая непроницаема</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Круговой контур — граница H=const</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Круговой контур — непроницаемая граница</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- INFLOW -->
+<section id="inflow">
+  <div class="container">
+    <div class="split reverse reveal">
+      <div class="col-media">
+        <div class="shot-frame"><img src="assets/img/screens/inflow-tree.png" alt="Ветка «Перетекание через дно» — типовая задача прогноза водопритоков"></div>
+      </div>
+      <div class="col-text">
+        <span class="kicker">Оценка водопритоков</span>
+        <h2 style="font-size:clamp(22px,3vw,30px)">Та же логика — для горного дела</h2>
+        <p class="muted" style="margin-top:14px;line-height:1.6">Ветка «Перетекание через дно» решает типовую задачу прогноза водопритоков в карьеры и горные выработки. Горнодобывающие предприятия и проектировщики карьеров/шахт получают тот же набор готовых гидродинамических формул, что и гидрогеологи — без отдельного инструмента.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="on-paper-dim">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">23 гидродинамические схемы</span>
+      <h2>Матрица расчётных схем оценки водопритоков</h2>
+    </div>
+    <div class="table-wrap reveal">
+      <table>
+        <thead>
+          <tr><th>Расчётная схема</th><th class="num">Безнапорный пласт</th><th class="num">Напорный пласт</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Неограниченный пласт — изолированный</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Полуограниченный — граница H=const</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Полуограниченный — непроницаемая граница</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-полоса — обе границы H=const</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-полоса — обе границы непроницаемы</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-полоса — одна H=const, другая непроницаема</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-угол (2 границы) — обе H=const</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-угол (2 границы) — обе непроницаемы</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Пласт-угол (2 границы) — одна H=const, другая непроницаема</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Круговой контур — граница H=const</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+          <tr><td>Круговой контур — непроницаемая граница</td><td class="yes">✓</td><td class="yes">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pill-note reveal" style="margin-top:18px">+ отдельная функция «Перетекание через дно» — 23-я схема группы</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="kicker">Соседнее меню</span>
+      <h2>Атмосферные осадки</h2>
+      <p>Расчёт водопритоков в карьер за счёт атмосферных осадков — рядом с типовыми схемами, в той же группе «Оценка водопритоков».</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card reveal">
+        <div class="icon-badge" data-icon="cloud-rain"></div>
+        <h3 style="font-size:16.5px">Нормальный приток дождевых вод</h3>
+        <p class="desc" style="margin-bottom:0">По формуле Абрамова: W = 1000·H<sub>d</sub>·α·F, результат — м³/сут.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-badge" data-icon="cloud-rain"></div>
+        <h3 style="font-size:16.5px">Нормальный приток талых вод</h3>
+        <p class="desc" style="margin-bottom:0">W = α·β·h<sub>c</sub>·F/t<sub>c</sub>, результат — м³/ч.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-badge" data-icon="cloud-rain"></div>
+        <h3 style="font-size:16.5px">Приток ливневых вод</h3>
+        <p class="desc" style="margin-bottom:0">W = q·α·F·η, результат — м³/ч.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-badge" data-icon="cloud-rain"></div>
+        <h3 style="font-size:16.5px">Интенсивность ливневого дождя</h3>
+        <p class="desc" style="margin-bottom:0">По формуле М.В. Молокова, результат — м³/(ч·км²).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tight on-paper-dim">
+  <div class="container">
+    <div class="cta-band reveal" style="background:linear-gradient(135deg, var(--sage-800), var(--ink-900))">
+      <div>
+        <h2>Дальше — ЗСО и гидрохимия</h2>
+        <p>Калькулятор зон санитарной охраны и оценка химического состава подземных вод.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="zso-hydrochemistry.html" class="btn btn-primary">Смотреть модуль</a>
+        <a href="product.html" class="btn btn-ghost-dark">Все модули</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.png" alt="Cenozoic">
+          <span class="brand-word">CENOZOIC</span>
+        </a>
+        <p>Инженерный софт для гидрогеологического моделирования, изысканий, мониторинга подземных вод и оценки притоков.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Продукт</h5>
+        <ul>
+          <li><a href="product.html">Все модули</a></li>
+          <li><a href="parameters.html">Расчётные параметры</a></li>
+          <li><a href="reserves-inflow.html">Запасы и водопритоки</a></li>
+          <li><a href="tools.html">Инструменты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Компания</h5>
+        <ul>
+          <li><a href="company.html">О компании</a></li>
+          <li><a href="pricing.html">Тарифы</a></li>
+          <li><a href="company.html#contact">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Продукты Cenozoic</h5>
+        <ul>
+          <li><a href="product.html">HydroCore (xlam)</a></li>
+          <li><a href="company.html">HydroPro (C#) — в разработке</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Cenozoic. Прототип продукта.</span>
+      <span>Белград, Сербия · Санкт-Петербург, Россия</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

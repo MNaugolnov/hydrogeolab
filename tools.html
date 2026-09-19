@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вспомогательные инструменты — Cenozoic</title>
+<meta name="description" content="Агрегатор данных, перевод координат, номенклатура топографических карт, калькулятор расстояний и конвертер размерностей — полезно не только гидрогеологам.">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="icon" href="assets/img/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#123626">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="nav is-light">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo.png" alt="Cenozoic">
+      <span class="brand-word">CENOZOIC</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Главная</a>
+      <a href="product.html">Модули</a>
+      <a href="pricing.html">Тарифы</a>
+      <a href="company.html">Компания</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="company.html#contact" class="btn btn-dark btn-sm btn-sm-hide">Написать нам</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+        <span data-icon="menu" style="width:20px;height:20px;display:block"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="crumb"><a href="index.html">Cenozoic</a><span data-icon="chevron-right" style="width:13px;height:13px"></span><a href="product.html">Модули</a><span data-icon="chevron-right" style="width:13px;height:13px"></span><span>Инструменты</span></div>
+    <h1>Вспомогательные инструменты</h1>
+    <p>Полезно не только гидрогеологам: расстояния, координаты, номенклатура карт, группировка данных и перевод единиц измерения — в одной группе на ленте.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="grid grid-3">
+      <div class="card reveal">
+        <div class="card-shot"><img src="assets/img/screens/tools-distance.png" alt="Форма «Расстояние между точками»"></div>
+        <div class="icon-badge" data-icon="ruler"></div>
+        <h3>Калькулятор расстояния</h3>
+        <p class="desc">Форма расчёта расстояний между точками, плюс функция для вставки в формулу.</p>
+        <hr>
+        <ul class="check-list">
+          <li><span data-icon="check-circle"></span>Диалоговая форма расчёта расстояний между точками</li>
+          <li><span data-icon="check-circle"></span>Функция <code>Distance3D</code> — вставляется прямо в ячейку</li>
+          <li><span data-icon="check-circle"></span>Поддержка 2D и 3D координат</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-shot"><img src="assets/img/screens/tools-nomen.png" alt="Форма «Номенклатура листов карт»"></div>
+        <div class="icon-badge" data-icon="map"></div>
+        <h3>Номенклатура карт</h3>
+        <p class="desc">Номенклатура листов топографических карт по координатам.</p>
+        <hr>
+        <ul class="check-list">
+          <li><span data-icon="check-circle"></span>Ввод координат в градусах или ГМС</li>
+          <li><span data-icon="check-circle"></span>Все масштабы: от 1:1 000 000 до 1:500</li>
+          <li><span data-icon="check-circle"></span>Готовый номенклатурный индекс листа для каждого масштаба</li>
+        </ul>
+      </div>
+      <div class="card reveal">
+        <div class="card-shot"><img src="assets/img/screens/tools-converter.png" alt="Форма «Конвертер единиц»"></div>
+        <div class="icon-badge" data-icon="swap"></div>
+        <h3>Конвертер размерностей</h3>
+        <p class="desc">Перевод значений между единицами измерения без выхода из Excel.</p>
+        <hr>
+        <ul class="check-list">
+          <li><span data-icon="check-circle"></span>Длина, площадь, объём, скорость, давление, коэф. фильтрации, расход и др.</li>
+          <li><span data-icon="check-circle"></span>Вызывается прямо с ленты «Гидрогеология»</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card reveal" style="margin-top:22px">
+      <div class="icon-badge" data-icon="compass"></div>
+      <h3>Перевод координат</h3>
+      <p class="desc">Градусы/минуты/секунды ⇄ десятичные градусы одной функцией.</p>
+      <hr>
+      <ul class="check-list">
+        <li><span data-icon="check-circle"></span><code>DMStoDD</code> — ГМС → десятичные градусы (знак результата равен знаку параметра «градусы»)</li>
+        <li><span data-icon="check-circle"></span><code>DDtoDMS</code> — десятичные градусы → строка вида 55°45'07.92″</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="on-paper-dim" id="aggregator">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Данные → выводы</span>
+      <h2>Агрегатор по столбцам</h2>
+      <p>Группировка и агрегация выделенного диапазона: выберите диапазон и нажмите кнопку — инструмент сам предложит столбцы для группировки и агрегации.</p>
+    </div>
+
+    <div class="split reveal">
+      <div class="col-text">
+        <h3 style="font-size:18px;margin-bottom:10px">Слои → интервалы</h3>
+        <p class="muted" style="line-height:1.6">Группировка по «Скважина + Возраст» (MIN/MAX) сворачивает детальную литологическую колонку в геологически осмысленные интервалы: вместо построчных замеров «от–до» — итоговые границы каждого стратиграфического слоя по каждой скважине.</p>
+        <span class="tag-sm" style="display:block;margin-top:20px">Результат</span>
+        <div class="shot-frame" style="max-width:360px">
+          <img src="assets/img/screens/aggregator-1-result.png" alt="Результат — интервалы по скважине и возрасту (MIN/MAX)">
+        </div>
+      </div>
+      <div class="col-media">
+        <div class="shot-frame"><img src="assets/img/screens/aggregator-1.png" alt="Агрегатор — группировка геологических слоёв по скважине и возрасту"></div>
+      </div>
+    </div>
+
+    <div class="split reverse reveal mt-lg">
+      <div class="col-media">
+        <div class="shot-frame"><img src="assets/img/screens/aggregator-2.png" alt="Агрегатор — группировка скважин по водоносному горизонту"></div>
+      </div>
+      <div class="col-text">
+        <h3 style="font-size:18px;margin-bottom:10px">Скважины → характеристики по горизонтам</h3>
+        <p class="muted" style="line-height:1.6">Группировка по «Водоносный горизонт» (SUM/AVG) агрегирует характеристики по каждому горизонту сразу для всех скважин участка. Инструмент честно предупреждает, какие столбцы не попадут в результат — так исключается риск потерять данные незаметно.</p>
+        <span class="tag-sm" style="display:block;margin-top:20px">Результат</span>
+        <div class="shot-frame" style="max-width:360px">
+          <img src="assets/img/screens/aggregator-2-result.png" alt="Результат — дебит (SUM) и минерализация (AVG) по водоносным горизонтам">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tight on-paper-dim">
+  <div class="container">
+    <div class="cta-band reveal" style="background:linear-gradient(135deg, var(--sage-800), var(--ink-900))">
+      <div>
+        <h2>Понравился набор инструментов?</h2>
+        <p>Посмотрите тарифы или напишите нам, чтобы обсудить пилотный проект.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="pricing.html" class="btn btn-primary">Тарифы</a>
+        <a href="company.html#contact" class="btn btn-ghost-dark">Написать нам</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <img src="assets/img/logo.png" alt="Cenozoic">
+          <span class="brand-word">CENOZOIC</span>
+        </a>
+        <p>Инженерный софт для гидрогеологического моделирования, изысканий, мониторинга подземных вод и оценки притоков.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Продукт</h5>
+        <ul>
+          <li><a href="product.html">Все модули</a></li>
+          <li><a href="parameters.html">Расчётные параметры</a></li>
+          <li><a href="reserves-inflow.html">Запасы и водопритоки</a></li>
+          <li><a href="tools.html">Инструменты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Компания</h5>
+        <ul>
+          <li><a href="company.html">О компании</a></li>
+          <li><a href="pricing.html">Тарифы</a></li>
+          <li><a href="company.html#contact">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Продукты Cenozoic</h5>
+        <ul>
+          <li><a href="product.html">HydroCore (xlam)</a></li>
+          <li><a href="company.html">HydroPro (C#) — в разработке</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Cenozoic. Прототип продукта.</span>
+      <span>Белград, Сербия · Санкт-Петербург, Россия</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
