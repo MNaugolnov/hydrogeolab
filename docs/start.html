@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Как пользоваться — Справочник Cenozoic</title>
+<meta name="description" content="Как подключить надстройку «Гидрогеология v.02» и работать с её функциями и окнами.">
+<link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32">
+<link rel="icon" href="../assets/img/favicon-16.png" sizes="16x16">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="theme-color" content="#123626">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/docs.css">
+</head>
+<body class="docs-page">
+<header class="nav is-light">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand">
+      <img src="../assets/img/logo.png" alt="Cenozoic">
+      <span class="brand-word">CENOZOIC</span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="../index.html">Главная</a>
+      <a href="../product.html">Модули</a>
+      <a href="../docs/index.html" class="active">Справочник</a>
+      <a href="../pricing.html">Тарифы</a>
+      <a href="../company.html">Компания</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../company.html#contact" class="btn btn-dark btn-sm btn-sm-hide">Написать нам</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+        <span data-icon="menu" style="width:20px;height:20px;display:block"></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="docs-wrap"><button class="side-toggle" id="sideToggle" aria-expanded="false">☰ Разделы справочника</button><aside class="docs-side" id="docsSide">
+  <div class="side-search"><input type="search" id="sideFilter" placeholder="Найти функцию…" aria-label="Найти функцию"></div>
+  <a class="side-top" href="../docs/index.html">Обзор справочника</a>
+  <a class="side-top on" href="../docs/start.html">Как пользоваться</a>
+  <a class="side-top" href="../docs/examples.html">Сквозные примеры</a>
+  <a class="side-top" href="../docs/glossary.html">Глоссарий параметров</a>
+  <details class="side-mod"><summary><span class="side-n">1</span>Расчётные параметры</summary>
+    <div class="side-sec">Меню «Параметры»</div>
+    <a class="side-fn" href="../docs/f/par_T.html" data-k="par_t водопроводимость t">par_T</a>
+    <a class="side-fn" href="../docs/f/levelcond.html" data-k="levelcond уровнепроводность a">levelcond</a>
+    <a class="side-fn" href="../docs/f/levelcond_star.html" data-k="levelcond_star пьезопроводность a*">levelcond_star</a>
+    <a class="side-fn" href="../docs/f/mu_star.html" data-k="mu_star коэффициент упругой водоотдачи μ*">mu_star</a>
+    <a class="side-fn" href="../docs/f/par_B.html" data-k="par_b параметр перетекания b">par_B</a>
+    <a class="side-fn" href="../docs/f/par_B2.html" data-k="par_b2 параметр перетекания b (два пласта)">par_B2</a>
+    <a class="side-fn" href="../docs/f/Kxy_avg.html" data-k="kxy_avg средний кф анизотропного пласта">Kxy_avg</a>
+    <a class="side-fn" href="../docs/f/Kh_bulk.html" data-k="kh_bulk приведённый кф слоистой толщи (горизонтальный)">Kh_bulk</a>
+    <a class="side-fn" href="../docs/f/Kv_bulk.html" data-k="kv_bulk приведённый кф слоистой толщи (вертикальный)">Kv_bulk</a>
+    <a class="side-fn" href="../docs/f/density.html" data-k="density плотность воды">density</a>
+    <div class="side-sec">«Большой колодец» — радиус</div>
+    <a class="side-fn" href="../docs/f/r_bigwell_line.html" data-k="r_bigwell_line радиус большого колодца: линейный ряд">r_bigwell_line</a>
+    <a class="side-fn" href="../docs/f/r_bigwell_area.html" data-k="r_bigwell_area радиус большого колодца: площадная система">r_bigwell_area</a>
+    <a class="side-fn" href="../docs/f/r_bigwell_rectangle.html" data-k="r_bigwell_rectangle радиус большого колодца: прямоугольный контур">r_bigwell_rectangle</a>
+    <a class="side-fn" href="../docs/f/r_bigwell_circle.html" data-k="r_bigwell_circle радиус большого колодца: кольцевая система / карьер">r_bigwell_circle</a>
+    <div class="side-sec">«Большой колодец» — корректность схематизации</div>
+    <a class="side-fn" href="../docs/f/r_bigwell_validity_noboundaries.html" data-k="r_bigwell_validity_noboundaries корректность схематизации: неограниченный пласт">r_bigwell_validity_noboundaries</a>
+    <a class="side-fn" href="../docs/f/r_bigwell_validity_boundaries.html" data-k="r_bigwell_validity_boundaries корректность схематизации: ограниченный пласт">r_bigwell_validity_boundaries</a>
+    <div class="side-sec">«Большой колодец» — центр тяжести</div>
+    <a class="side-fn" href="../docs/f/bigwell_center_x.html" data-k="bigwell_center_x центр тяжести: координата x">bigwell_center_x</a>
+    <a class="side-fn" href="../docs/f/bigwell_center_y.html" data-k="bigwell_center_y центр тяжести: координата y">bigwell_center_y</a>
+    <a class="side-fn" href="../docs/f/bigwell_center.html" data-k="bigwell_center центр тяжести: пара {x₀; y₀}">bigwell_center</a>
+  </details>
+  <details class="side-mod"><summary><span class="side-n">2</span>ЗСО — зоны санитарной охраны</summary>
+    <a class="side-tool" href="../docs/tools/zso.html"><span data-icon="shield" class="side-ic"></span>Калькулятор ЗСО</a>
+    <div class="side-sec">Функции ЗСО</div>
+    <a class="side-fn" href="../docs/f/well_0b_0f.html" data-k="well_0b_0f зсо: сосредоточенный водозабор без естественного потока">well_0b_0f</a>
+    <a class="side-fn" href="../docs/f/well_0b.html" data-k="well_0b зсо: сосредоточенный водозабор с естественным потоком">well_0b</a>
+    <a class="side-fn" href="../docs/f/line_0b_0f.html" data-k="line_0b_0f зсо: линейный водозабор без естественного потока">line_0b_0f</a>
+    <a class="side-fn" href="../docs/f/line_0b.html" data-k="line_0b зсо: линейный водозабор с естественным потоком">line_0b</a>
+  </details>
+  <details class="side-mod"><summary><span class="side-n">3</span>Оценка запасов подземных вод</summary>
+    <div class="side-sec">Неограниченный изолированный пласт</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_0b_simple.html" data-k="drawdown_conf_0b_simple неограниченный изолированный пласт: напорный пласт">drawdown_conf_0b_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_0b_simple.html" data-k="drawdown_unconf_0b_simple неограниченный изолированный пласт: безнапорный пласт">drawdown_unconf_0b_simple</a>
+    <div class="side-sec">Неограниченный пласт с перетеканием</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_ch_simple.html" data-k="drawdown_conf_ch_simple неограниченный пласт с перетеканием: напорный пласт">drawdown_conf_ch_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_ch_simple.html" data-k="drawdown_unconf_ch_simple неограниченный пласт с перетеканием: безнапорный пласт">drawdown_unconf_ch_simple</a>
+    <div class="side-sec">Полуограниченный пласт — граница H = const</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_hb_simple.html" data-k="drawdown_conf_hb_simple полуограниченный пласт — граница h = const: напорный пласт">drawdown_conf_hb_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_hb_simple.html" data-k="drawdown_unconf_hb_simple полуограниченный пласт — граница h = const: безнапорный пласт">drawdown_unconf_hb_simple</a>
+    <div class="side-sec">Полуограниченный пласт — непроницаемая граница</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_qb_simple.html" data-k="drawdown_conf_qb_simple полуограниченный пласт — непроницаемая граница: напорный пласт">drawdown_conf_qb_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_qb_simple.html" data-k="drawdown_unconf_qb_simple полуограниченный пласт — непроницаемая граница: безнапорный пласт">drawdown_unconf_qb_simple</a>
+    <div class="side-sec">Пласт-полоса — обе границы H = const</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_strip_h_simple.html" data-k="drawdown_conf_strip_h_simple пласт-полоса — обе границы h = const: напорный пласт">drawdown_conf_strip_h_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_strip_h_simple.html" data-k="drawdown_unconf_strip_h_simple пласт-полоса — обе границы h = const: безнапорный пласт">drawdown_unconf_strip_h_simple</a>
+    <div class="side-sec">Пласт-полоса — обе границы непроницаемые</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_strip_q_simple.html" data-k="drawdown_conf_strip_q_simple пласт-полоса — обе границы непроницаемые: напорный пласт">drawdown_conf_strip_q_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_strip_q_simple.html" data-k="drawdown_unconf_strip_q_simple пласт-полоса — обе границы непроницаемые: безнапорный пласт">drawdown_unconf_strip_q_simple</a>
+    <div class="side-sec">Пласт-полоса — одна граница H = const, другая непроницаемая</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_strip_hq_simple.html" data-k="drawdown_conf_strip_hq_simple пласт-полоса — одна граница h = const, другая непроницаемая: напорный пласт">drawdown_conf_strip_hq_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_strip_hq_simple.html" data-k="drawdown_unconf_strip_hq_simple пласт-полоса — одна граница h = const, другая непроницаемая: безнапорный пласт">drawdown_unconf_strip_hq_simple</a>
+    <div class="side-sec">Пласт-угол — обе границы H = const</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_corner_h_simple.html" data-k="drawdown_conf_corner_h_simple пласт-угол — обе границы h = const: напорный пласт">drawdown_conf_corner_h_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_corner_h_simple.html" data-k="drawdown_unconf_corner_h_simple пласт-угол — обе границы h = const: безнапорный пласт">drawdown_unconf_corner_h_simple</a>
+    <div class="side-sec">Пласт-угол — обе границы непроницаемые</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_corner_q_simple.html" data-k="drawdown_conf_corner_q_simple пласт-угол — обе границы непроницаемые: напорный пласт">drawdown_conf_corner_q_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_corner_q_simple.html" data-k="drawdown_unconf_corner_q_simple пласт-угол — обе границы непроницаемые: безнапорный пласт">drawdown_unconf_corner_q_simple</a>
+    <div class="side-sec">Пласт-угол — одна граница H = const, другая непроницаемая</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_corner_hq_simple.html" data-k="drawdown_conf_corner_hq_simple пласт-угол — одна граница h = const, другая непроницаемая: напорный пласт">drawdown_conf_corner_hq_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_corner_hq_simple.html" data-k="drawdown_unconf_corner_hq_simple пласт-угол — одна граница h = const, другая непроницаемая: безнапорный пласт">drawdown_unconf_corner_hq_simple</a>
+    <div class="side-sec">Круговой контур — граница H = const</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_circle_h_simple.html" data-k="drawdown_conf_circle_h_simple круговой контур — граница h = const: напорный пласт">drawdown_conf_circle_h_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_circle_h_simple.html" data-k="drawdown_unconf_circle_h_simple круговой контур — граница h = const: безнапорный пласт">drawdown_unconf_circle_h_simple</a>
+    <div class="side-sec">Круговой контур — непроницаемая граница</div>
+    <a class="side-fn" href="../docs/f/drawdown_conf_circle_q_simple.html" data-k="drawdown_conf_circle_q_simple круговой контур — непроницаемая граница: напорный пласт">drawdown_conf_circle_q_simple</a>
+    <a class="side-fn" href="../docs/f/drawdown_unconf_circle_q_simple.html" data-k="drawdown_unconf_circle_q_simple круговой контур — непроницаемая граница: безнапорный пласт">drawdown_unconf_circle_q_simple</a>
+  </details>
+  <details class="side-mod"><summary><span class="side-n">4</span>Оценка водопритоков</summary>
+    <div class="side-sec">Неограниченный изолированный пласт</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_0b_simple.html" data-k="discharge_conf_0b_simple неограниченный изолированный пласт: напорный пласт">discharge_conf_0b_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_0b_simple.html" data-k="discharge_unconf_0b_simple неограниченный изолированный пласт: безнапорный пласт">discharge_unconf_0b_simple</a>
+    <div class="side-sec">Полуограниченный пласт — граница H = const</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_hb_simple.html" data-k="discharge_conf_hb_simple полуограниченный пласт — граница h = const: напорный пласт">discharge_conf_hb_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_hb_simple.html" data-k="discharge_unconf_hb_simple полуограниченный пласт — граница h = const: безнапорный пласт">discharge_unconf_hb_simple</a>
+    <div class="side-sec">Полуограниченный пласт — непроницаемая граница</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_qb_simple.html" data-k="discharge_conf_qb_simple полуограниченный пласт — непроницаемая граница: напорный пласт">discharge_conf_qb_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_qb_simple.html" data-k="discharge_unconf_qb_simple полуограниченный пласт — непроницаемая граница: безнапорный пласт">discharge_unconf_qb_simple</a>
+    <div class="side-sec">Пласт-полоса — обе границы H = const</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_strip_h_simple.html" data-k="discharge_conf_strip_h_simple пласт-полоса — обе границы h = const: напорный пласт">discharge_conf_strip_h_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_strip_h_simple.html" data-k="discharge_unconf_strip_h_simple пласт-полоса — обе границы h = const: безнапорный пласт">discharge_unconf_strip_h_simple</a>
+    <div class="side-sec">Пласт-полоса — обе границы непроницаемые</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_strip_q_simple.html" data-k="discharge_conf_strip_q_simple пласт-полоса — обе границы непроницаемые: напорный пласт">discharge_conf_strip_q_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_strip_q_simple.html" data-k="discharge_unconf_strip_q_simple пласт-полоса — обе границы непроницаемые: безнапорный пласт">discharge_unconf_strip_q_simple</a>
+    <div class="side-sec">Пласт-полоса — одна граница H = const, другая непроницаемая</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_strip_hq_simple.html" data-k="discharge_conf_strip_hq_simple пласт-полоса — одна граница h = const, другая непроницаемая: напорный пласт">discharge_conf_strip_hq_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_strip_hq_simple.html" data-k="discharge_unconf_strip_hq_simple пласт-полоса — одна граница h = const, другая непроницаемая: безнапорный пласт">discharge_unconf_strip_hq_simple</a>
+    <div class="side-sec">Пласт-угол — обе границы H = const</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_corner_h_simple.html" data-k="discharge_conf_corner_h_simple пласт-угол — обе границы h = const: напорный пласт">discharge_conf_corner_h_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_corner_h_simple.html" data-k="discharge_unconf_corner_h_simple пласт-угол — обе границы h = const: безнапорный пласт">discharge_unconf_corner_h_simple</a>
+    <div class="side-sec">Пласт-угол — обе границы непроницаемые</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_corner_q_simple.html" data-k="discharge_conf_corner_q_simple пласт-угол — обе границы непроницаемые: напорный пласт">discharge_conf_corner_q_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_corner_q_simple.html" data-k="discharge_unconf_corner_q_simple пласт-угол — обе границы непроницаемые: безнапорный пласт">discharge_unconf_corner_q_simple</a>
+    <div class="side-sec">Пласт-угол — одна граница H = const, другая непроницаемая</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_corner_hq_simple.html" data-k="discharge_conf_corner_hq_simple пласт-угол — одна граница h = const, другая непроницаемая: напорный пласт">discharge_conf_corner_hq_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_corner_hq_simple.html" data-k="discharge_unconf_corner_hq_simple пласт-угол — одна граница h = const, другая непроницаемая: безнапорный пласт">discharge_unconf_corner_hq_simple</a>
+    <div class="side-sec">Круговой контур — граница H = const</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_circle_h_simple.html" data-k="discharge_conf_circle_h_simple круговой контур — граница h = const: напорный пласт">discharge_conf_circle_h_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_circle_h_simple.html" data-k="discharge_unconf_circle_h_simple круговой контур — граница h = const: безнапорный пласт">discharge_unconf_circle_h_simple</a>
+    <div class="side-sec">Круговой контур — непроницаемая граница</div>
+    <a class="side-fn" href="../docs/f/discharge_conf_circle_q_simple.html" data-k="discharge_conf_circle_q_simple круговой контур — непроницаемая граница: напорный пласт">discharge_conf_circle_q_simple</a>
+    <a class="side-fn" href="../docs/f/discharge_unconf_circle_q_simple.html" data-k="discharge_unconf_circle_q_simple круговой контур — непроницаемая граница: безнапорный пласт">discharge_unconf_circle_q_simple</a>
+    <div class="side-sec">Перетекание через дно</div>
+    <a class="side-fn" href="../docs/f/bottom_overflow.html" data-k="bottom_overflow перетекание через дно">bottom_overflow</a>
+    <div class="side-sec">Атмосферные осадки</div>
+    <a class="side-fn" href="../docs/f/rain_norm.html" data-k="rain_norm нормальный приток дождевых вод">rain_norm</a>
+    <a class="side-fn" href="../docs/f/meltwater.html" data-k="meltwater нормальный приток талых вод">meltwater</a>
+    <a class="side-fn" href="../docs/f/stormwater.html" data-k="stormwater приток ливневых вод">stormwater</a>
+    <a class="side-fn" href="../docs/f/intensity_stormwater.html" data-k="intensity_stormwater интенсивность ливневого дождя (формула молокова)">intensity_stormwater</a>
+  </details>
+  <details class="side-mod"><summary><span class="side-n">5</span>Гидрохимия</summary>
+    <a class="side-tool" href="../docs/tools/kurlov.html"><span data-icon="flask" class="side-ic"></span>Формула солевого состава (Курлова)</a>
+    <div class="side-sec">Меню «Классификации»</div>
+    <a class="side-fn" href="../docs/f/type_M.html" data-k="type_m тип воды по минерализации">type_M</a>
+    <a class="side-fn" href="../docs/f/type_pH.html" data-k="type_ph тип воды по ph">type_pH</a>
+  </details>
+  <details class="side-mod"><summary><span class="side-n">6</span>Вспомогательные инструменты</summary>
+    <a class="side-tool" href="../docs/tools/distance.html"><span data-icon="ruler" class="side-ic"></span>Калькулятор расстояния</a>
+    <a class="side-tool" href="../docs/tools/nomenclature.html"><span data-icon="map" class="side-ic"></span>Номенклатура карт</a>
+    <a class="side-tool" href="../docs/tools/aggregator.html"><span data-icon="combine" class="side-ic"></span>Агрегатор</a>
+    <a class="side-tool" href="../docs/tools/converter.html"><span data-icon="swap" class="side-ic"></span>Конвертер размерностей</a>
+    <div class="side-sec">Функция расстояния</div>
+    <a class="side-fn" href="../docs/f/Distance3D.html" data-k="distance3d расстояние между точками (3d)">Distance3D</a>
+    <div class="side-sec">Перевод координат</div>
+    <a class="side-fn" href="../docs/f/DMStoDD.html" data-k="dmstodd гмс → десятичные градусы">DMStoDD</a>
+    <a class="side-fn" href="../docs/f/DDtoDMS.html" data-k="ddtodms десятичные градусы → гмс">DDtoDMS</a>
+    <div class="side-sec">Номенклатура карт — функции</div>
+    <a class="side-fn" href="../docs/f/MapSheet1M.html" data-k="mapsheet1m номенклатура листа 1:1 000 000">MapSheet1M</a>
+    <a class="side-fn" href="../docs/f/MapSheet500K.html" data-k="mapsheet500k номенклатура листа 1:500 000">MapSheet500K</a>
+    <a class="side-fn" href="../docs/f/MapSheet200K.html" data-k="mapsheet200k номенклатура листа 1:200 000">MapSheet200K</a>
+    <a class="side-fn" href="../docs/f/MapSheet100K.html" data-k="mapsheet100k номенклатура листа 1:100 000">MapSheet100K</a>
+    <a class="side-fn" href="../docs/f/MapSheet50K.html" data-k="mapsheet50k номенклатура листа 1:50 000">MapSheet50K</a>
+    <a class="side-fn" href="../docs/f/MapSheet25K.html" data-k="mapsheet25k номенклатура листа 1:25 000">MapSheet25K</a>
+    <a class="side-fn" href="../docs/f/MapSheet10K.html" data-k="mapsheet10k номенклатура листа 1:10 000">MapSheet10K</a>
+    <a class="side-fn" href="../docs/f/MapSheet5K.html" data-k="mapsheet5k номенклатура листа 1:5 000">MapSheet5K</a>
+    <a class="side-fn" href="../docs/f/MapSheet2K.html" data-k="mapsheet2k номенклатура листа 1:2 000">MapSheet2K</a>
+    <a class="side-fn" href="../docs/f/MapSheet1K.html" data-k="mapsheet1k номенклатура листа 1:1 000">MapSheet1K</a>
+    <a class="side-fn" href="../docs/f/MapSheet500.html" data-k="mapsheet500 номенклатура листа 1:500">MapSheet500</a>
+  </details>
+</aside>
+<main class="docs-main"><nav class="docs-crumb"><a href="../docs/index.html">Справочник</a><span>›</span><b>Как пользоваться</b></nav>
+<header class="fn-head"><h1>Как пользоваться надстройкой</h1>
+<p class="fn-sum">Все инструменты собраны на одной вкладке ленты Excel — <b>«Гидрогеология v.02»</b>. Вкладка разбита на шесть групп кнопок: Расчётные параметры, ЗСО, Оценка запасов, Оценка водопритоков, Гидрохимия и Вспомогательные инструменты.</p></header>
+<div class="shot-frame"><img src="../assets/img/screens/ribbon-overview.png" alt="Вкладка «Гидрогеология v.02» на ленте Excel"></div>
+
+<section class="d-block"><h2 class="d-h2">Подключение</h2>
+<ol class="steps"><li>Прототип поставляется файлом Excel с макросами (<code>hydro_proto_v_0_2.xlsm</code>). Откройте его и нажмите «Включить содержимое» — на ленте появится вкладка «Гидрогеология v.02».</li>
+<li>Для постоянной работы надстройку в формате <code>.xlam</code> подключают через <b>Файл → Параметры → Надстройки → Управление: Надстройки Excel → Перейти → Обзор</b>. Тогда вкладка доступна в любой книге.</li></ol></section>
+
+<section class="d-block"><h2 class="d-h2">Два способа работы</h2>
+<div class="grid grid-2">
+<div class="card"><div class="icon-badge" data-icon="sigma"></div><h3>Формула в ячейке</h3><p class="desc" style="font-style:normal">Большинство пунктов меню — обычные функции Excel вида <code>=ИмяФункции(аргумент1; аргумент2; …)</code>. Кликните по пункту меню — надстройка вставит шаблон формулы в активную ячейку и откроет <b>Мастер аргументов</b> с подсказкой для каждого аргумента. Функции можно набирать вручную или найти через <b>fx → категория «Гидрогеология»</b>.</p></div>
+<div class="card"><div class="icon-badge" data-icon="list-function"></div><h3>Окно-калькулятор</h3><p class="desc" style="font-style:normal">Для шести задач открывается отдельное окно: <a href="tools/zso.html">ЗСО</a>, <a href="tools/kurlov.html">формула Курлова</a>, <a href="tools/distance.html">расстояние между точками</a>, <a href="tools/nomenclature.html">номенклатура карт</a>, <a href="tools/converter.html">конвертер единиц</a>, <a href="tools/aggregator.html">агрегатор</a>. Данные вводятся в окне, результат копируется или вставляется в ячейку кнопкой.</p></div>
+</div></section>
+
+<section class="d-block"><h2 class="d-h2">Разделители и десятичная запятая</h2>
+<p>Разделитель аргументов зависит от региональных настроек Excel. В русской локали это точка с запятой, а дробная часть отделяется запятой:</p>
+<div class="code-line"><code>=par_T(15; 20)   =drawdown_conf_hb_simple(B1; B2; B3; B4; B5)   =type_M(0,564)</code></div>
+<p class="muted small">В справочнике формулы записаны так же, как их нужно вводить в русской версии Excel.</p></section>
+
+<section class="d-block"><h2 class="d-h2">Функции, возвращающие массив</h2>
+<p><a href="f/bigwell_center.html"><code>bigwell_center</code></a> и функции ЗСО (<a href="f/well_0b_0f.html"><code>well_0b_0f</code></a>, <a href="f/well_0b.html"><code>well_0b</code></a>, <a href="f/line_0b_0f.html"><code>line_0b_0f</code></a>, <a href="f/line_0b.html"><code>line_0b</code></a>) возвращают сразу несколько значений в строку. Выделите нужное число соседних ячеек в строке, введите формулу и нажмите <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Enter</kbd>. В Excel 365 результат «разливается» по соседним ячейкам сам. Отдельное значение можно получить через <code>=ИНДЕКС(well_0b_0f(…); 1)</code>.</p></section>
+
+<section class="d-block"><h2 class="d-h2">Что означают ошибки</h2>
+<div class="table-wrap"><table><thead><tr><th>Значение в ячейке</th><th>Причина</th></tr></thead><tbody>
+<tr><td><b>#ЗНАЧ!</b></td><td>Один из аргументов не число (текст, ошибка в ссылке) или координаты/минуты вне допустимого диапазона.</td></tr>
+<tr><td><b>#ДЕЛ/0!</b></td><td>Нулевой знаменатель: k = 0, m = 0, r = 0, нулевая сумма дебитов и т.п.</td></tr>
+<tr><td><b>#ЧИСЛО!</b></td><td>Недопустимые значения: отрицательное подкоренное выражение (понижение больше мощности безнапорного пласта), логарифм от неположительного числа, неположительное время.</td></tr>
+<tr><td>«не выполняется критерий (r^2)/(4*a*t) &lt;= 0.1»</td><td>Для неограниченного пласта не выполнено условие применимости логарифмической аппроксимации — увеличьте время или уменьшите расстояние.</td></tr>
+<tr><td>«Исходные данные неполные»</td><td>Диапазоны разной длины или содержат пустые/нечисловые ячейки (функции с диапазонами: Kh_bulk, Kv_bulk, bigwell_center…).</td></tr>
+</tbody></table></div></section>
+
+<section class="d-block"><h2 class="d-h2">Куда дальше</h2><div class="grid grid-3">
+<a class="card" href="index.html"><div class="icon-badge" data-icon="list-function"></div><h3>Все функции</h3><p class="desc" style="font-style:normal">Каталог с поиском по названию и назначению.</p></a>
+<a class="card" href="examples.html"><div class="icon-badge" data-icon="combine"></div><h3>Сквозные примеры</h3><p class="desc" style="font-style:normal">От задачи до готовой формулы: водозабор, карьер, химанализ.</p></a>
+<a class="card" href="glossary.html"><div class="icon-badge" data-icon="database"></div><h3>Глоссарий</h3><p class="desc" style="font-style:normal">Единые обозначения аргументов и их единицы.</p></a>
+</div></section></main></div>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="brand">
+          <img src="../assets/img/logo.png" alt="Cenozoic">
+          <span class="brand-word">CENOZOIC</span>
+        </a>
+        <p>Инженерный софт для гидрогеологического моделирования, изысканий, мониторинга подземных вод и оценки притоков.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Продукт</h5>
+        <ul>
+          <li><a href="../product.html">Все модули</a></li>
+          <li><a href="../parameters.html">Расчётные параметры</a></li>
+          <li><a href="../reserves-inflow.html">Запасы и водопритоки</a></li>
+          <li><a href="../tools.html">Инструменты</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Справочник</h5>
+        <ul>
+          <li><a href="../docs/index.html">Все функции</a></li>
+          <li><a href="../docs/start.html">Как пользоваться</a></li>
+          <li><a href="../docs/examples.html">Сквозные примеры</a></li>
+          <li><a href="../docs/glossary.html">Глоссарий параметров</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Компания</h5>
+        <ul>
+          <li><a href="../company.html">О компании</a></li>
+          <li><a href="../pricing.html">Тарифы</a></li>
+          <li><a href="../company.html#contact">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year></span> Cenozoic. Прототип продукта.</span>
+      <span>Белград, Сербия · Санкт-Петербург, Россия</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/hydro-lib.js"></script>
+<script src="../assets/js/docs.js"></script>
+</body>
+</html>
