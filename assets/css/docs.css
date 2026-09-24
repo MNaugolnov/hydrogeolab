@@ -269,6 +269,7 @@ a.gl{ text-decoration: none; font-size: 12px; }
   .pn{ flex-direction: column; } .pn a{ max-width: 100%; }
 }
 .docs-main section{ padding: 0; }
-.kf .ion{ display: inline-flex; align-items: baseline; }
-.kf .ion sub{ vertical-align: -.25em; line-height: 1; }
-.kf .ion sup{ vertical-align: .6em; line-height: 1; margin-left: .05em; }
+.kf .ion{ display: inline-block; white-space: nowrap; }
+.kf .ion sub{ font-size: .62em; vertical-align: -.35em; line-height: 0; }
+.kf .ion .pct{ margin-left: .28em; }
+.kf .m-fr > .m-n, .kf .m-fr > .m-d{ gap: .75em; }

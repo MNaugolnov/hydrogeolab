@@ -205,7 +205,7 @@ ${stepTable([
 fs.writeFileSync(path.join(OUT, 'examples.html'), layout(R1, 'examples', 'Сквозные примеры', 'Типовые задачи гидрогеолога от исходных данных до результата с функциями надстройки.', ex));
 
 function kurlovHtml(k) {
-  const part = arr => arr.map(([ion, p]) => `<span class="ion">${ion.replace(/(\d)/g, '<sub>$1</sub>')}<sup>${p}</sup></span>`).join('');
+  const part = arr => arr.map(([ion, p]) => `<span class="ion">${ion.replace(/(\d)/g, '<sub>$1</sub>')}<span class="pct">${p}</span></span>`).join('');
   return `<span class="kf"><span class="kf-m">M<sub>${String(Math.round(k.M_gL * 100) / 100).replace('.', ',')}</sub></span><span class="m-fr"><span class="m-n">${part(k.anions)}</span><span class="m-d">${part(k.cations)}</span></span></span>`;
 }
 console.log('tool pages, start, examples: ok');

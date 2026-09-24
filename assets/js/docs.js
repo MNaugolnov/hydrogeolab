@@ -184,7 +184,7 @@
     var f = fields(ions.map(function (x) { return { key: x[0], label: lab(x[0]), unit: 'мг/л', value: x[1] }; }), run);
     f.node.classList.add('ions');
     var out = el('div', { class: 'calc-out' });
-    function part(arr) { return arr.map(function (p) { return '<span class="ion">' + lab(p[0]) + '<sup>' + p[1] + '</sup></span>'; }).join(''); }
+    function part(arr) { return arr.map(function (p) { return '<span class="ion">' + lab(p[0]) + '<span class="pct">' + p[1] + '</span></span>'; }).join(''); }
     function run() {
       var o = {}; ions.forEach(function (x) { o[x[0]] = f.v(x[0]); });
       var r = H.kurlov(o);
