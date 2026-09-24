@@ -26,6 +26,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Главная</a>
       <a href="product.html">Модули</a>
+      <a href="docs/index.html">Справочник</a>
       <a href="pricing.html">Тарифы</a>
       <a href="company.html">Компания</a>
     </nav>
@@ -65,21 +66,7 @@
   <div class="container">
     <div class="table-wrap reveal">
       <table>
-        <thead>
-          <tr><th>Функция</th><th>Что вычисляет</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Водопроводимость T</td><td>Основной фильтрационный параметр водоносного пласта</td></tr>
-          <tr><td>Уровнепроводность a</td><td>Скорость распространения возмущения уровня в безнапорном пласте</td></tr>
-          <tr><td>Пьезопроводность a*</td><td>Скорость распространения возмущения давления в напорном пласте</td></tr>
-          <tr><td>Коэффициент упругой водоотдачи μ*</td><td>Ёмкостный параметр напорного пласта</td></tr>
-          <tr><td>Параметр перетекания B</td><td>Характеристика перетекания через разделяющий слой (однопластовая схема)</td></tr>
-          <tr><td>Параметр перетекания B (два пласта)</td><td>Та же характеристика для схемы с двумя взаимодействующими пластами</td></tr>
-          <tr><td>Средний Кф анизотропного пласта</td><td>Осреднённый коэффициент фильтрации с учётом анизотропии</td></tr>
-          <tr><td>Приведённый Кф слоистой толщи (гор.)</td><td>Эквивалентный коэффициент фильтрации по горизонтали для слоистой толщи</td></tr>
-          <tr><td>Приведённый Кф слоистой толщи (верт.)</td><td>Эквивалентный коэффициент фильтрации по вертикали для слоистой толщи</td></tr>
-          <tr><td>Плотность</td><td>Плотность породы/флюида по исходным данным</td></tr>
-        </tbody>
+        <thead><tr><th>Пункт меню</th><th>Функция</th><th>Что вычисляет</th></tr></thead><tbody><tr><td>Водопроводимость T</td><td><a href="docs/f/par_T.html"><code>par_T</code></a></td><td>T = k·m, м²/сут</td></tr><tr><td>Уровнепроводность a</td><td><a href="docs/f/levelcond.html"><code>levelcond</code></a></td><td>a = T/μ — безнапорный пласт, м²/сут</td></tr><tr><td>Пьезопроводность a*</td><td><a href="docs/f/levelcond_star.html"><code>levelcond_star</code></a></td><td>a* = k/η* — напорный пласт, м²/сут</td></tr><tr><td>Коэффициент упругой водоотдачи μ*</td><td><a href="docs/f/mu_star.html"><code>mu_star</code></a></td><td>μ* = η*·m</td></tr><tr><td>Параметр перетекания B</td><td><a href="docs/f/par_B.html"><code>par_B</code></a></td><td>B = √(T·mₚ/kₚ), м</td></tr><tr><td>Параметр перетекания B (два пласта)</td><td><a href="docs/f/par_B2.html"><code>par_B2</code></a></td><td>перетекание через кровлю и подошву, м</td></tr><tr><td>Средний Кф анизотропного пласта</td><td><a href="docs/f/Kxy_avg.html"><code>Kxy_avg</code></a></td><td>k = √(kx·ky), м/сут</td></tr><tr><td>Приведённый Кф слоистой толщи (гор.)</td><td><a href="docs/f/Kh_bulk.html"><code>Kh_bulk</code></a></td><td>k = Σkᵢmᵢ / Σmᵢ, м/сут</td></tr><tr><td>Приведённый Кф слоистой толщи (верт.)</td><td><a href="docs/f/Kv_bulk.html"><code>Kv_bulk</code></a></td><td>k = Σmᵢ / Σ(mᵢ/kᵢ), м/сут</td></tr><tr><td>Плотность</td><td><a href="docs/f/density.html"><code>density</code></a></td><td>плотность воды по минерализации: ρ ≈ 1000 + 0,7·C, кг/м³</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -110,7 +97,7 @@
     <div class="grid grid-3">
       <div class="card reveal">
         <div class="icon-badge" data-icon="circle-dot"></div>
-        <h3>Радиус большого колодца</h3>
+        <h3><a href="docs/index.html#s-bigwell-radius">Радиус большого колодца</a></h3>
         <hr>
         <ul class="check-list">
           <li><span data-icon="check-circle"></span>Линейный ряд / линейная дрена</li>
@@ -121,7 +108,7 @@
       </div>
       <div class="card reveal">
         <div class="icon-badge" data-icon="shield"></div>
-        <h3>Условие корректности схематизации</h3>
+        <h3><a href="docs/index.html#s-bigwell-validity">Условие корректности схематизации</a></h3>
         <hr>
         <ul class="check-list">
           <li><span data-icon="check-circle"></span>Неограниченный в плане пласт</li>
@@ -130,7 +117,7 @@
       </div>
       <div class="card reveal">
         <div class="icon-badge" data-icon="target"></div>
-        <h3>Координаты центра тяжести</h3>
+        <h3><a href="docs/index.html#s-bigwell-center">Координаты центра тяжести</a></h3>
         <hr>
         <ul class="check-list">
           <li><span data-icon="check-circle"></span>Прямой расчёт по координатам скважин группового водозабора</li>
@@ -183,10 +170,12 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Продукты Cenozoic</h5>
+        <h5>Справочник</h5>
         <ul>
-          <li><a href="product.html">HydroCore (xlam)</a></li>
-          <li><a href="company.html">HydroPro (C#) — в разработке</a></li>
+          <li><a href="docs/index.html">Все функции</a></li>
+          <li><a href="docs/start.html">Как пользоваться</a></li>
+          <li><a href="docs/examples.html">Сквозные примеры</a></li>
+          <li><a href="docs/glossary.html">Глоссарий параметров</a></li>
         </ul>
       </div>
     </div>

@@ -1,0 +1,1571 @@
+{
+ "rain_norm": {
+  "module": "modAtmInflow",
+  "params": [
+   "Hd_daily As Variant",
+   "alpha_runoff As Variant",
+   "F_catch As Variant"
+  ],
+  "desc": "Атмосферные осадки. Нормальный приток дождевых вод (по Абрамову). W = 1000*Hd*alpha*F. Результат: м^3/сут.",
+  "args": [
+   "Hd - среднесуточное за год количество осадков по местной метеостанции, мм",
+   "alpha - коэффициент поверхностного стока (0.8-0.9 для скальных/глинистых пород, 0.5-0.7 для песчаных)",
+   "F - водосборная площадь карьера в границах нагорных канав/дамб, КМ^2 (не м^2!)"
+  ]
+ },
+ "meltwater": {
+  "module": "modAtmInflow",
+  "params": [
+   "alpha_runoff As Variant",
+   "beta_snow As Variant",
+   "hc_snow As Variant",
+   "F_catch As Variant",
+   "tc_melt As Variant"
+  ],
+  "desc": "Атмосферные осадки. Нормальный приток талых вод. W = alpha*beta*hc*F/tc. Результат: м^3/ч.",
+  "args": [
+   "alpha - коэффициент поверхностного стока (0.8-0.9 для скальных/глинистых пород, 0.5-0.7 для песчаных)",
+   "beta - коэффициент степени удаления снега из карьера (обычно 0.5)",
+   "hc - годовое количество твёрдых осадков 50% обеспеченности, м",
+   "F - водосборная площадь карьера в границах нагорных канав/дамб, КМ^2 (не м^2!)",
+   "tc - продолжительность интенсивного снеготаяния в период паводка, ч"
+  ]
+ },
+ "stormwater": {
+  "module": "modAtmInflow",
+  "params": [
+   "q_storm As Variant",
+   "alpha_runoff As Variant",
+   "F_catch As Variant",
+   "eta_extent As Variant"
+  ],
+  "desc": "Атмосферные осадки. Приток ливневых вод. W = q*alpha*F*eta. Результат: м^3/ч.",
+  "args": [
+   "q - средняя интенсивность ливневого дождя, м^3/(ч*км^2)",
+   "alpha - коэффициент поверхностного стока (0.8-0.9 для скальных/глинистых пород, 0.5-0.7 для песчаных)",
+   "F - водосборная площадь карьера в границах нагорных канав/дамб, КМ^2 (не м^2!)",
+   "eta - коэффициент простираемости дождя (1 для малых карьеров, 0.8 для выработок ~40 км^2)"
+  ]
+ },
+ "intensity_stormwater": {
+  "module": "modAtmInflow",
+  "params": [
+   "n_param As Variant",
+   "q20_base As Variant",
+   "C_param As Variant",
+   "P_period As Variant",
+   "t_dur As Variant"
+  ],
+  "desc": "Атмосферные осадки. Интенсивность выпадения ливневого дождя по формуле М.В. Молокова. q = 360 * 20^n * q20 * (1 + C*log10(P)) / t^n. Результат: м^3/(ч*км^2).",
+  "args": [
+   "n - параметр формулы Молокова (зависит от географического положения карьера)",
+   "q20 - интенсивность ливневого дождя продолжительностью 20 мин и повторяемостью P=1, м^3/(ч*км^2)",
+   "C - параметр формулы Молокова (зависит от географического положения карьера)",
+   "P - период повторяемости ливня",
+   "t - продолжительность ливня, ч"
+  ]
+ },
+ "discharge_conf_0b_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "a_piezo As Variant",
+   "t_time As Variant",
+   "r_dist As Variant"
+  ],
+  "desc": "Водоприток. Схема: неограниченный изолированный напорный горизонт. Q = 4*pi*k*m*S/ln(2.25*a*t/r^2). Применимо при r^2/(4*a*t) << 1.",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "a* - коэффициент пьезопроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - радиус «большого колодца» / скважины, м"
+  ]
+ },
+ "discharge_conf_hb_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant"
+  ],
+  "desc": "Водоприток. Схема: полуограниченный напорный пласт, граница H=const. Q = 2*pi*k*m*S/ln(2*L/r).",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "L - расстояние от центра до границы (или ширина полосы), м"
+  ]
+ },
+ "discharge_conf_qb_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "a_piezo As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant"
+  ],
+  "desc": "Водоприток. Схема: полуограниченный напорный пласт, непроницаемая граница (Q=0). Q = 2*pi*k*m*S/ln(1.13*a*t/(L*r)).",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "a* - коэффициент пьезопроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - радиус «большого колодца» / скважины, м",
+   "L - расстояние от центра до границы (или ширина полосы), м"
+  ]
+ },
+ "discharge_conf_strip_h_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Водоприток. Схема: напорный пласт-полоса, обе границы H=const. Q = 2*pi*k*m*S/ln(0.64*L*sin(pi*L1/L)/r).",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "L - расстояние от центра до границы (или ширина полосы), м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м"
+  ]
+ },
+ "discharge_conf_strip_q_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "a_piezo As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Водоприток. Схема: напорный пласт-полоса, обе границы Q=0. Q = 4*pi*k*m*S / [ln(7.1*sqrt(a*t)/L) + 2*ln(0.16*L/(r*sin(pi*L1/L)))].",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "a* - коэффициент пьезопроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - радиус «большого колодца» / скважины, м",
+   "L - расстояние от центра до границы (или ширина полосы), м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м"
+  ]
+ },
+ "discharge_conf_strip_hq_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Водоприток. Схема: напорный пласт-полоса, одна граница H=const, вторая Q=0. Q = 2*pi*k*m*S/ln(1.27*L*ctg(pi*L1/(2*L))/r).",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "L - расстояние от центра до границы (или ширина полосы), м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м"
+  ]
+ },
+ "discharge_conf_corner_h_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Водоприток. Схема: напорный пласт-угол, обе границы H=const. p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). Q = 2*pi*k*m*S/ln(p1*p2/(r*p3)).",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м",
+   "L2 - расстояние от центра до второй границы, м"
+  ]
+ },
+ "discharge_conf_corner_q_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "a_piezo As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Водоприток. Схема: напорный пласт-угол, обе границы Q=0. p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). Q = pi*k*m*S/ln(2.25*a*t/sqrt(r*p1*p2*p3)).",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "a* - коэффициент пьезопроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - радиус «большого колодца» / скважины, м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м",
+   "L2 - расстояние от центра до второй границы, м"
+  ]
+ },
+ "discharge_conf_corner_hq_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Водоприток. Схема: напорный пласт-угол, одна граница H=const (L1), другая Q=0 (L2). p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). Q = 2*pi*k*m*S/ln(p1*p3/(r*p2)).",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м",
+   "L2 - расстояние от центра до второй границы, м"
+  ]
+ },
+ "discharge_conf_circle_h_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "R_circ As Variant"
+  ],
+  "desc": "Водоприток. Схема: напорный круговой пласт, внешняя граница H=const. Q = 2*pi*k*m*S/ln(R/r).",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "R - радиус кругового пласта, м"
+  ]
+ },
+ "discharge_conf_circle_q_simple": {
+  "module": "modInflow",
+  "params": [
+   "S_drawdown As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "a_piezo As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "R_circ As Variant"
+  ],
+  "desc": "Водоприток. Схема: напорный круговой пласт, внешняя граница Q=0. Q = 2*pi*k*m*S / [ln(R/r) + 2*a*t/R^2 - 0.75].",
+  "args": [
+   "S - понижение уровня (исходный напор минус отметка дренирования), м",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "a* - коэффициент пьезопроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - радиус «большого колодца» / скважины, м",
+   "R - радиус кругового пласта, м"
+  ]
+ },
+ "discharge_unconf_0b_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "a_level As Variant",
+   "t_time As Variant",
+   "r_dist As Variant"
+  ],
+  "desc": "Водоприток. Схема: неограниченный изолированный безнапорный горизонт. Q = 2*pi*k*(h0^2 - h1^2)/ln(2.25*a*t/r^2).",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "a - коэффициент уровнепроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - радиус «большого колодца» / скважины, м"
+  ]
+ },
+ "discharge_unconf_hb_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant"
+  ],
+  "desc": "Водоприток. Схема: полуограниченный безнапорный пласт, граница H=const. Q = pi*k*(h0^2 - h1^2)/ln(2*L/r).",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "L - расстояние от центра до границы (или ширина полосы), м"
+  ]
+ },
+ "discharge_unconf_qb_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "a_level As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant"
+  ],
+  "desc": "Водоприток. Схема: полуограниченный безнапорный пласт, непроницаемая граница (Q=0). Q = pi*k*(h0^2 - h1^2)/ln(1.13*a*t/(L*r)).",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "a - коэффициент уровнепроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - радиус «большого колодца» / скважины, м",
+   "L - расстояние от центра до границы (или ширина полосы), м"
+  ]
+ },
+ "discharge_unconf_strip_h_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Водоприток. Схема: безнапорный пласт-полоса, обе границы H=const. Q = pi*k*(h0^2 - h1^2)/ln(0.64*L*sin(pi*L1/L)/r).",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "L - расстояние от центра до границы (или ширина полосы), м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м"
+  ]
+ },
+ "discharge_unconf_strip_q_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "a_level As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Водоприток. Схема: безнапорный пласт-полоса, обе границы Q=0. Q = 2*pi*k*(h0^2 - h1^2) / [ln(7.1*sqrt(a*t)/L) + 2*ln(0.16*L/(r*sin(pi*L1/L)))].",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "a - коэффициент уровнепроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - радиус «большого колодца» / скважины, м",
+   "L - расстояние от центра до границы (или ширина полосы), м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м"
+  ]
+ },
+ "discharge_unconf_strip_hq_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Водоприток. Схема: безнапорный пласт-полоса, одна граница H=const, вторая Q=0. Q = pi*k*(h0^2 - h1^2)/ln(1.27*L*ctg(pi*L1/(2*L))/r).",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "L - расстояние от центра до границы (или ширина полосы), м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м"
+  ]
+ },
+ "discharge_unconf_corner_h_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Водоприток. Схема: безнапорный пласт-угол, обе границы H=const. p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). Q = pi*k*(h0^2 - h1^2)/ln(p1*p2/(r*p3)).",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м",
+   "L2 - расстояние от центра до второй границы, м"
+  ]
+ },
+ "discharge_unconf_corner_q_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "a_level As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Водоприток. Схема: безнапорный пласт-угол, обе границы Q=0. p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). Q = pi*k*(h0^2 - h1^2)/(2*ln(2.25*a*t/sqrt(r*p1*p2*p3))).",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "a - коэффициент уровнепроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - радиус «большого колодца» / скважины, м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м",
+   "L2 - расстояние от центра до второй границы, м"
+  ]
+ },
+ "discharge_unconf_corner_hq_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Водоприток. Схема: безнапорный пласт-угол, одна граница H=const (L1), другая Q=0 (L2). p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). Q = pi*k*(h0^2 - h1^2)/ln(p1*p3/(r*p2)).",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "L1 - расстояние от центра до первой / ближайшей границы, м",
+   "L2 - расстояние от центра до второй границы, м"
+  ]
+ },
+ "discharge_unconf_circle_h_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "r_dist As Variant",
+   "R_circ As Variant"
+  ],
+  "desc": "Водоприток. Схема: безнапорный круговой пласт, внешняя граница H=const. Q = pi*k*(h0^2 - h1^2)/ln(R/r).",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "r - радиус «большого колодца» / скважины, м",
+   "R - радиус кругового пласта, м"
+  ]
+ },
+ "discharge_unconf_circle_q_simple": {
+  "module": "modInflow",
+  "params": [
+   "k_filtr As Variant",
+   "h0_initial As Variant",
+   "h1_remain As Variant",
+   "a_level As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "R_circ As Variant"
+  ],
+  "desc": "Водоприток. Схема: безнапорный круговой пласт, внешняя граница Q=0. Q = pi*k*(h0^2 - h1^2) / [ln(R/r) + 2*a*t/R^2 - 0.75].",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h0 - исходная мощность водоносного пласта (до понижения), м",
+   "h1 - остаточная мощность пласта под дном выработки, м",
+   "a - коэффициент уровнепроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - радиус «большого колодца» / скважины, м",
+   "R - радиус кругового пласта, м"
+  ]
+ },
+ "bottom_overflow": {
+  "module": "modInflow",
+  "params": [
+   "kp_aquit As Variant",
+   "mp_aquit As Variant",
+   "dh_head As Variant",
+   "F_area As Variant"
+  ],
+  "desc": "Перетекание из нижележащего горизонта через слабопроницаемые породы подошвы. Q = kp*dh*F/mp.",
+  "args": [
+   "kp - коэффициент фильтрации разделяющего слоя, м/сут",
+   "mp - мощность разделяющего слоя, м",
+   "dh - разность отметок напора нижележащего горизонта и подошвы карьера, м",
+   "F - площадь дна карьера или участка, на котором определяется переток, м^2"
+  ]
+ },
+ "SmartFormat": {
+  "module": "modConverter",
+  "params": [
+   "x As Double"
+  ]
+ },
+ "ToDouble": {
+  "module": "modConverter",
+  "params": [
+   "s As String",
+   "ok As Boolean"
+  ]
+ },
+ "density": {
+  "module": "modExtras",
+  "params": [
+   "c As Variant"
+  ],
+  "desc": "Оценочное значение плотности воды, кг/м^3. ? ? 1000 + 0.7 * C, где C - минерализация (г/л).",
+  "args": [
+   "C - минерализация воды, г/л"
+  ]
+ },
+ "type_M": {
+  "module": "modExtras",
+  "params": [
+   "value As Variant"
+  ],
+  "desc": "Название группы воды по минерализации (г/л). Петров Н.С., Потапов А.А., Общая гидрогеология, СПб., 1993, с.45.",
+  "args": [
+   "value - минерализация воды, г/л"
+  ]
+ },
+ "type_pH": {
+  "module": "modExtras",
+  "params": [
+   "value As Variant"
+  ],
+  "desc": "Название группы подземных минеральных вод по величине pH. А.Н.Павлов, В.Н.Шемякин, 1967 г.",
+  "args": [
+   "value - величина pH (0 < pH <= 14)"
+  ]
+ },
+ "KurlovMassToMgEq": {
+  "module": "modKurlov",
+  "params": [
+   "ionKey As String",
+   "mgL As Double"
+  ]
+ },
+ "KurlovMineralization": {
+  "module": "modKurlov",
+  "params": [
+   "ionsMgL As Object"
+  ]
+ },
+ "KurlovRAnions": {
+  "module": "modKurlov",
+  "params": [
+   "ionsMgL As Object"
+  ]
+ },
+ "KurlovRKations": {
+  "module": "modKurlov",
+  "params": [
+   "ionsMgL As Object"
+  ]
+ },
+ "KurlovAnalysisError": {
+  "module": "modKurlov",
+  "params": [
+   "ionsMgL As Object"
+  ]
+ },
+ "KurlovPercents": {
+  "module": "modKurlov",
+  "params": [
+   "ionsMgL As Object",
+   "kind As String"
+  ]
+ },
+ "KurlovSortedKeys": {
+  "module": "modKurlov",
+  "params": [
+   "percents As Object"
+  ]
+ },
+ "KurlovDescribeName": {
+  "module": "modKurlov",
+  "params": [
+   "ionsMgL As Object"
+  ]
+ },
+ "KurlovUnicodeFormula": {
+  "module": "modKurlov",
+  "params": [
+   "ionsMgL As Object",
+   "Optional decimals As Long = 2"
+  ]
+ },
+ "IonLabelUnicode": {
+  "module": "modKurlov",
+  "params": [
+   "ionKey As String"
+  ]
+ },
+ "ToSuperscript": {
+  "module": "modKurlov",
+  "params": [
+   "s As String"
+  ]
+ },
+ "ToSubscript": {
+  "module": "modKurlov",
+  "params": [
+   "s As String"
+  ]
+ },
+ "KurlovClassifyByM": {
+  "module": "modKurlov",
+  "params": [
+   "M_mgL As Double"
+  ]
+ },
+ "FormatNumberDotComma": {
+  "module": "modKurlov",
+  "params": [
+   "x As Double",
+   "decimals As Long"
+  ]
+ },
+ "par_T": {
+  "module": "modHydroParams",
+  "params": [
+   "k As Variant",
+   "m As Variant"
+  ],
+  "desc": "Водопроводимость пласта T, м^2/сут. Формула: T = k*m.",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность пласта, м"
+  ]
+ },
+ "levelcond": {
+  "module": "modHydroParams",
+  "params": [
+   "T_avg As Variant",
+   "mu As Variant"
+  ],
+  "desc": "Уровнепроводность a, м^2/сут. Формула: a = T_avg/mu.",
+  "args": [
+   "T_avg - средняя водопроводимость, м^2/сут (T_avg = k*h_avg)",
+   "mu - коэффициент гравитационной водоотдачи"
+  ]
+ },
+ "levelcond_star": {
+  "module": "modHydroParams",
+  "params": [
+   "k As Variant",
+   "eta_star As Variant"
+  ],
+  "desc": "Пьезопроводность a*, м^2/сут. Формула: a* = k/eta*.",
+  "args": [
+   "k - коэффициент фильтрации пласта, м/сут",
+   "eta* - коэффициент упругоёмкости породы, 1/м"
+  ]
+ },
+ "mu_star": {
+  "module": "modHydroParams",
+  "params": [
+   "eta_star As Variant",
+   "m As Variant"
+  ],
+  "desc": "Коэффициент упругой водоотдачи mu*. Формула: mu* = eta* * m.",
+  "args": [
+   "eta* - коэффициент упругоёмкости породы, 1/м",
+   "m - мощность пласта, м"
+  ]
+ },
+ "par_B": {
+  "module": "modHydroParams",
+  "params": [
+   "t As Variant",
+   "kp As Variant",
+   "mp As Variant"
+  ],
+  "desc": "Параметр перетекания B, м. Формула: B = sqrt(T*mp/kp).",
+  "args": [
+   "T - водопроводимость пласта, м^2/сут",
+   "kp - коэф. фильтрации разделяющего слоя, м/сут",
+   "mp - мощность разделяющего слоя, м"
+  ]
+ },
+ "par_B2": {
+  "module": "modHydroParams",
+  "params": [
+   "t As Variant",
+   "k1 As Variant",
+   "m1 As Variant",
+   "k2 As Variant",
+   "m2 As Variant"
+  ],
+  "desc": "Параметр перетекания B (два пласта — из кровли и из подошвы), м. Формула: B = sqrt(T / (k1/m1 + k2/m2)).",
+  "args": [
+   "T - водопроводимость целевого пласта, м^2/сут",
+   "k1 - коэф. фильтрации слоя КРОВЛИ, м/сут",
+   "m1 - мощность слоя КРОВЛИ, м",
+   "k2 - коэф. фильтрации слоя ПОДОШВЫ, м/сут",
+   "m2 - мощность слоя ПОДОШВЫ, м"
+  ]
+ },
+ "Kxy_avg": {
+  "module": "modHydroParams",
+  "params": [
+   "kx As Variant",
+   "ky As Variant"
+  ],
+  "desc": "Средний коэф. фильтрации анизотропного в плане пласта, м/сут. Формула: k = sqrt(kx*ky).",
+  "args": [
+   "kx - коэф. фильтрации по оси X, м/сут",
+   "ky - коэф. фильтрации по оси Y, м/сут"
+  ]
+ },
+ "Kh_bulk": {
+  "module": "modHydroParams",
+  "params": [
+   "k As Variant",
+   "m As Variant"
+  ],
+  "desc": "Приведённый горизонтальный Кф слоистой толщи, м/сут. Формула: k_h = Sum(ki*mi)/Sum(mi).",
+  "args": [
+   "k - диапазон коэф. фильтрации слоёв, м/сут",
+   "m - диапазон мощностей соответствующих слоёв, м"
+  ]
+ },
+ "Kv_bulk": {
+  "module": "modHydroParams",
+  "params": [
+   "k As Variant",
+   "m As Variant"
+  ],
+  "desc": "Приведённый вертикальный Кф слоистой толщи, м/сут. Формула: k_v = Sum(mi)/Sum(mi/ki).",
+  "args": [
+   "k - диапазон вертикальных коэф. фильтрации слоёв, м/сут",
+   "m - диапазон мощностей соответствующих слоёв, м"
+  ]
+ },
+ "GetColName": {
+  "module": "AggCapture",
+  "params": [
+   "idx As Integer"
+  ]
+ },
+ "MapSheet1M": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapSheet500K": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapSheet200K": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapSheet100K": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapSheet50K": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapSheet25K": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapSheet10K": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapSheet5K": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapSheet2K": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapSheet1K": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapSheet500": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "MapNomenComputeAll": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double",
+   "sheets() As String"
+  ]
+ },
+ "MapNomenScaleLabel": {
+  "module": "modMapNomenclature",
+  "params": [
+   "idx As Long"
+  ]
+ },
+ "MapNomenValidate": {
+  "module": "modMapNomenclature",
+  "params": [
+   "lat As Double",
+   "lon As Double"
+  ]
+ },
+ "well_0b_0f": {
+  "module": "modZSO_calc",
+  "params": [
+   "q As Double",
+   "t As Double",
+   "m As Double",
+   "n As Double"
+  ]
+ },
+ "well_0b": {
+  "module": "modZSO_calc",
+  "params": [
+   "q As Double",
+   "t As Double",
+   "k As Double",
+   "m As Double",
+   "n As Double",
+   "i As Double"
+  ]
+ },
+ "line_0b_0f": {
+  "module": "modZSO_calc",
+  "params": [
+   "q As Double",
+   "t As Double",
+   "l As Double",
+   "k As Double",
+   "m As Double",
+   "n As Double"
+  ]
+ },
+ "line_0b": {
+  "module": "modZSO_calc",
+  "params": [
+   "q As Double",
+   "t As Double",
+   "l As Double",
+   "k As Double",
+   "m As Double",
+   "n As Double",
+   "i As Double"
+  ]
+ },
+ "Distance3D": {
+  "module": "modGeoDistance",
+  "params": [
+   "Optional X1 As Variant = 0",
+   "Optional Y1 As Variant = 0",
+   "Optional Z1 As Variant = 0",
+   "Optional X2 As Variant = 0",
+   "Optional Y2 As Variant = 0",
+   "Optional Z2 As Variant = 0"
+  ]
+ },
+ "RunAggregation": {
+  "module": "AggEngine",
+  "params": []
+ },
+ "DMStoDD": {
+  "module": "modCoordConvert",
+  "params": [
+   "Optional deg As Variant = 0",
+   "Optional minutes As Variant = 0",
+   "Optional seconds As Variant = 0"
+  ]
+ },
+ "DDtoDMS": {
+  "module": "modCoordConvert",
+  "params": [
+   "Optional dd As Variant = 0"
+  ]
+ },
+ "r_bigwell_line": {
+  "module": "modBigWell",
+  "params": [
+   "l As Variant"
+  ],
+  "desc": "Радиус «большого колодца» для замены линейного ряда скважин. R = 0.2*l.",
+  "args": [
+   "l - длина линейного ряда (дрены), м"
+  ]
+ },
+ "r_bigwell_area": {
+  "module": "modBigWell",
+  "params": [
+   "p As Variant"
+  ],
+  "desc": "Радиус «большого колодца» для замены площадной системы скважин (L/B > 3). R = p/(2*pi).",
+  "args": [
+   "p - периметр площади, м"
+  ]
+ },
+ "r_bigwell_rectangle": {
+  "module": "modBigWell",
+  "params": [
+   "b As Variant",
+   "l As Variant"
+  ],
+  "desc": "Радиус «большого колодца» для контура, близкого к вытянутому прямоугольнику. R = eta*(L+B)/4.",
+  "args": [
+   "B - ширина контура выработок, м",
+   "L - протяжённость (длина) контура, м"
+  ]
+ },
+ "r_bigwell_circle": {
+  "module": "modBigWell",
+  "params": [
+   "f As Variant"
+  ],
+  "desc": "Радиус «большого колодца» для замены кольцевой системы скважин / карьера. R = sqrt(F/pi).",
+  "args": [
+   "F - площадь системы (карьера), м^2"
+  ]
+ },
+ "r_bigwell_validity_boundaries": {
+  "module": "modBigWell",
+  "params": [
+   "r As Variant",
+   "l As Variant"
+  ],
+  "desc": "Проверка корректности схематизации к «большому колодцу» в ОГРАНИЧЕННОМ в плане пласте. Возвращает ИСТИНА, если L/R >= 5.",
+  "args": [
+   "R - радиус «большого колодца», м",
+   "L - расстояние до ближайшей границы области фильтрации, м"
+  ]
+ },
+ "r_bigwell_validity_noboundaries": {
+  "module": "modBigWell",
+  "params": [
+   "r As Variant",
+   "a_star As Variant",
+   "t As Variant"
+  ],
+  "desc": "Проверка корректности схематизации к «большому колодцу» в НЕОГРАНИЧЕННОМ в плане пласте. L = 1.5*sqrt(a*t). Возвращает ИСТИНА, если L/R >= 5.",
+  "args": [
+   "R - радиус «большого колодца», м",
+   "a* - коэффициент пьезопроводности, м^2/сут",
+   "t - расчётное время, сут"
+  ]
+ },
+ "bigwell_center_x": {
+  "module": "modBigWell",
+  "params": [
+   "x As Variant",
+   "q As Variant"
+  ],
+  "desc": "X-координата центра тяжести площадной системы скважин. x0 = Sum(xi*Qi)/Sum(Qi).",
+  "args": [
+   "x - диапазон координат X скважин",
+   "Q - диапазон весов (расходов/дебитов)"
+  ]
+ },
+ "bigwell_center_y": {
+  "module": "modBigWell",
+  "params": [
+   "y As Variant",
+   "q As Variant"
+  ],
+  "desc": "Y-координата центра тяжести площадной системы скважин. y0 = Sum(yi*Qi)/Sum(Qi).",
+  "args": [
+   "y - диапазон координат Y скважин",
+   "Q - диапазон весов (расходов/дебитов)"
+  ]
+ },
+ "bigwell_center": {
+  "module": "modBigWell",
+  "params": [
+   "x As Variant",
+   "y As Variant",
+   "q As Variant"
+  ],
+  "desc": "Координаты центра тяжести площадной системы скважин. Возвращает массив {x0, y0}. Использовать как формулу массива (две соседние ячейки в строку + Ctrl+Shift+Enter).",
+  "args": [
+   "x - диапазон координат X скважин",
+   "y - диапазон координат Y скважин",
+   "Q - диапазон весов (расходов/дебитов)"
+  ]
+ },
+ "drawdown_conf_0b_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "a_piezo As Variant",
+   "t_time As Variant",
+   "r_dist As Variant"
+  ],
+  "desc": "Понижение в любой точке пласта. Схема: неограниченный изолированный напорный горизонт. S = Q/(4*pi*k*m)*ln(2.25*a*t/r^2). Применимо при r^2/(4*a*t) <= 0.1.",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "a - коэффициент пьезопроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)"
+  ]
+ },
+ "drawdown_conf_ch_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "B_perc As Variant"
+  ],
+  "desc": "Понижение в напорном неограниченном пласте с перетеканием из смежного пласта (H=const). S = Q/(2*pi*k*m)*ln(1.12*B/r^2).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "B - параметр перетекания, м"
+  ]
+ },
+ "drawdown_conf_hb_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant"
+  ],
+  "desc": "Понижение в скважине для полуограниченного напорного пласта; граница H=const. S = Q/(2*pi*k*m)*ln(2*L/r).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L - расстояние от центра скважины до границы (или ширина полосы), м"
+  ]
+ },
+ "drawdown_conf_qb_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "a_piezo As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant"
+  ],
+  "desc": "Понижение в скважине для полуограниченного напорного пласта; непроницаемая граница (Q=0). S = Q/(2*pi*k*m)*ln(1.13*a*t/(L*r)).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "a - коэффициент пьезопроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L - расстояние от центра скважины до границы (или ширина полосы), м"
+  ]
+ },
+ "drawdown_conf_strip_h_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Напорный пласт-полоса; обе границы H=const. S = Q/(2*pi*k*m)*ln(0.64*L*sin(pi*L1/L)/r).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L - расстояние от центра скважины до границы (или ширина полосы), м",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м"
+  ]
+ },
+ "drawdown_conf_strip_q_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "a_piezo As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Напорный пласт-полоса; обе границы Q=0. S = Q/(4*pi*k*m)*[ln(7.1*sqrt(a*t)/L) + 2*ln(0.16*L/(r*sin(pi*L1/L)))].",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "a - коэффициент пьезопроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L - расстояние от центра скважины до границы (или ширина полосы), м",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м"
+  ]
+ },
+ "drawdown_conf_strip_hq_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Напорный пласт-полоса; одна граница H=const, другая Q=0. S = Q/(2*pi*k*m)*ln(1.27*L*ctg(pi*L1/(2*L))/r).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L - расстояние от центра скважины до границы (или ширина полосы), м",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м"
+  ]
+ },
+ "drawdown_conf_corner_h_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Напорный пласт-угол; обе границы H=const. p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). S = Q/(2*pi*k*m)*ln(p1*p2/(r*p3)).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м",
+   "L2 - расстояние от центра скважины до второй границы, м"
+  ]
+ },
+ "drawdown_conf_corner_q_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "a_piezo As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Напорный пласт-угол; обе границы Q=0. p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). S = Q/(pi*k*m)*ln(2.25*a*t/sqrt(r*p1*p2*p3)).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "a - коэффициент пьезопроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м",
+   "L2 - расстояние от центра скважины до второй границы, м"
+  ]
+ },
+ "drawdown_conf_corner_hq_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Напорный пласт-угол; одна граница H=const (L1), другая Q=0 (L2). p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). S = Q/(2*pi*k*m)*ln(p1*p3/(r*p2)).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м",
+   "L2 - расстояние от центра скважины до второй границы, м"
+  ]
+ },
+ "drawdown_conf_circle_h_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "r_dist As Variant",
+   "R_circ As Variant"
+  ],
+  "desc": "Напорный круговой пласт; внешняя граница H=const. S = Q/(2*pi*k*m)*ln(R/r).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "R - радиус кругового пласта, м"
+  ]
+ },
+ "drawdown_conf_circle_q_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "m_power As Variant",
+   "a_piezo As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "R_circ As Variant"
+  ],
+  "desc": "Напорный круговой пласт; внешняя граница Q=0. S = Q/(2*pi*k*m)*[ln(R/r) + 2*a*t/R^2 - 0.75].",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "m - мощность напорного пласта, м",
+   "a - коэффициент пьезопроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "R - радиус кругового пласта, м"
+  ]
+ },
+ "drawdown_unconf_0b_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "a_level As Variant",
+   "t_time As Variant",
+   "r_dist As Variant"
+  ],
+  "desc": "Понижение в любой точке пласта. Схема: неограниченный изолированный безнапорный горизонт. S = h - sqrt(h^2 - Q/(2*pi*k)*ln(2.25*a*t/r^2)). Применимо при r^2/(4*a*t) <= 0.1.",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "a - коэффициент уровнепроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)"
+  ]
+ },
+ "drawdown_unconf_ch_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "r_dist As Variant",
+   "B_perc As Variant"
+  ],
+  "desc": "Безнапорный неограниченный пласт с перетеканием из смежного (H=const). S = h - sqrt(h^2 - Q/(pi*k)*ln(1.12*B/r)).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "B - параметр перетекания, м"
+  ]
+ },
+ "drawdown_unconf_hb_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant"
+  ],
+  "desc": "Полуограниченный безнапорный пласт; граница H=const. S = h - sqrt(h^2 - Q/(pi*k)*ln(2*L/r)).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L - расстояние от центра скважины до границы (или ширина полосы), м"
+  ]
+ },
+ "drawdown_unconf_qb_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "a_level As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant"
+  ],
+  "desc": "Полуограниченный безнапорный пласт; непроницаемая граница (Q=0). S = h - sqrt(h^2 - Q/(pi*k)*ln(1.13*a*t/(L*r))).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "a - коэффициент уровнепроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L - расстояние от центра скважины до границы (или ширина полосы), м"
+  ]
+ },
+ "drawdown_unconf_strip_h_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Безнапорный пласт-полоса; обе границы H=const. S = h - sqrt(h^2 - Q/(pi*k)*ln(0.64*L*sin(pi*L1/L)/r)).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L - расстояние от центра скважины до границы (или ширина полосы), м",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м"
+  ]
+ },
+ "drawdown_unconf_strip_q_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "a_level As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Безнапорный пласт-полоса; обе границы Q=0. S = h - sqrt(h^2 - Q/(2*pi*k)*[ln(7.1*sqrt(a*t)/L) + 2*ln(0.16*L/(r*sin(pi*L1/L)))]).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "a - коэффициент уровнепроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L - расстояние от центра скважины до границы (или ширина полосы), м",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м"
+  ]
+ },
+ "drawdown_unconf_strip_hq_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "r_dist As Variant",
+   "L_bound As Variant",
+   "L1_near As Variant"
+  ],
+  "desc": "Безнапорный пласт-полоса; одна граница H=const, другая Q=0. S = h - sqrt(h^2 - Q/(pi*k)*ln(1.27*L*ctg(pi*L1/(2*L))/r)).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L - расстояние от центра скважины до границы (или ширина полосы), м",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м"
+  ]
+ },
+ "drawdown_unconf_corner_h_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Безнапорный пласт-угол; обе границы H=const. p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). S = h - sqrt(h^2 - Q/(pi*k)*ln(p1*p2/(r*p3))).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м",
+   "L2 - расстояние от центра скважины до второй границы, м"
+  ]
+ },
+ "drawdown_unconf_corner_q_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "a_level As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Безнапорный пласт-угол; обе границы Q=0. p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). S = h - sqrt(h^2 - 2*Q/(pi*k)*ln(2.25*a*t/sqrt(r*p1*p2*p3))).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "a - коэффициент уровнепроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м",
+   "L2 - расстояние от центра скважины до второй границы, м"
+  ]
+ },
+ "drawdown_unconf_corner_hq_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "r_dist As Variant",
+   "L1_near As Variant",
+   "L2_far As Variant"
+  ],
+  "desc": "Безнапорный пласт-угол; одна граница H=const (L1), другая Q=0 (L2). p1=2*L1, p2=2*L2, p3=sqrt(p1^2+p2^2). S = h - sqrt(h^2 - Q/(pi*k)*ln(p1*p3/(r*p2))).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "L1 - расстояние от центра скважины до первой / ближайшей границы, м",
+   "L2 - расстояние от центра скважины до второй границы, м"
+  ]
+ },
+ "drawdown_unconf_circle_h_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "r_dist As Variant",
+   "R_circ As Variant"
+  ],
+  "desc": "Безнапорный круговой пласт; внешняя граница H=const. S = h - sqrt(h^2 - Q/(pi*k)*ln(R/r)).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "R - радиус кругового пласта, м"
+  ]
+ },
+ "drawdown_unconf_circle_q_simple": {
+  "module": "modReserves",
+  "params": [
+   "Q_debit As Variant",
+   "k_filtr As Variant",
+   "h_power As Variant",
+   "a_level As Variant",
+   "t_time As Variant",
+   "r_dist As Variant",
+   "R_circ As Variant"
+  ],
+  "desc": "Безнапорный круговой пласт; внешняя граница Q=0. S = h - sqrt(h^2 - Q/(pi*k)*[ln(R/r) + 2*a*t/R^2 - 0.75]).",
+  "args": [
+   "Q - дебит скважины, м^3/сут",
+   "k - коэффициент фильтрации пласта, м/сут",
+   "h - мощность водонасыщенной толщи, м",
+   "a - коэффициент уровнепроводности, м^2/сут",
+   "t - время работы скважины, сут",
+   "r - расстояние от центра скважины, м (или радиус «большого колодца»)",
+   "R - радиус кругового пласта, м"
+  ]
+ },
+ "GenerateSheetName": {
+  "module": "AggCore",
+  "params": []
+ },
+ "SheetExists": {
+  "module": "AggCore",
+  "params": [
+   "shName As String"
+  ]
+ }
+}

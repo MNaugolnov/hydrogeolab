@@ -26,6 +26,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Главная</a>
       <a href="product.html">Модули</a>
+      <a href="docs/index.html">Справочник</a>
       <a href="pricing.html">Тарифы</a>
       <a href="company.html">Компания</a>
     </nav>
@@ -60,6 +61,7 @@
           <li><span data-icon="check-circle"></span>Результаты: R — вверх по потоку, r — вниз по потоку, L — длина ЗСО</li>
           <li><span data-icon="check-circle"></span>Наглядная схема зоны строится по вашим данным</li>
         </ul>
+        <p style="margin-top:18px"><a href="docs/tools/zso.html" class="btn btn-outline btn-sm">Калькулятор ЗСО в справочнике →</a></p>
       </div>
       <div class="col-media">
         <div class="shot-frame"><img src="assets/img/screens/zso-form.png" alt="Калькулятор ЗСО — расчёт зон санитарной охраны со схемой"></div>
@@ -79,7 +81,7 @@
         <span class="kicker">Гидрохимия</span>
         <h2 style="font-size:clamp(22px,3vw,30px)">Формула солевого состава (формула Курлова)</h2>
         <p class="muted" style="margin-top:14px;line-height:1.6">Расчёт минерализации и солевого состава воды по содержанию основных анионов (HCO₃, CO₃, Cl, SO₄) и катионов (Ca, Mg, Na, K) — с готовым текстовым заключением о типе воды и проверкой сходимости анализа.</p>
-        <span class="badge badge-dev" style="margin-top:18px">В разработке — доступно в следующей версии</span>
+        <p style="margin-top:18px"><a href="docs/tools/kurlov.html" class="btn btn-outline btn-sm">Калькулятор Курлова в справочнике →</a></p>
       </div>
     </div>
   </div>
@@ -95,13 +97,13 @@
     <div class="grid grid-2">
       <div class="card reveal">
         <div class="icon-badge" data-icon="flask"></div>
-        <h3>Тип воды по минерализации</h3>
-        <p class="desc" style="margin-bottom:0">Автоматическое определение типа воды (пресная, солоноватая, солёная и т.д.) по суммарной минерализации.</p>
+        <h3><a href="docs/f/type_M.html">Тип воды по минерализации</a></h3>
+        <p class="desc" style="margin-bottom:0">Функция <code>type_M</code>: от «ультрапресных вод» до «крепких рассолов» по минерализации в г/л.</p>
       </div>
       <div class="card reveal">
         <div class="icon-badge" data-icon="flask"></div>
-        <h3>Тип воды по pH</h3>
-        <p class="desc" style="margin-bottom:0">Классификация по кислотно-щелочным свойствам подземных вод.</p>
+        <h3><a href="docs/f/type_pH.html">Тип воды по pH</a></h3>
+        <p class="desc" style="margin-bottom:0">Функция <code>type_pH</code>: от «сильнокислых» до «сильнощелочных» вод по величине pH.</p>
       </div>
     </div>
   </div>
@@ -150,10 +152,12 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h5>Продукты Cenozoic</h5>
+        <h5>Справочник</h5>
         <ul>
-          <li><a href="product.html">HydroCore (xlam)</a></li>
-          <li><a href="company.html">HydroPro (C#) — в разработке</a></li>
+          <li><a href="docs/index.html">Все функции</a></li>
+          <li><a href="docs/start.html">Как пользоваться</a></li>
+          <li><a href="docs/examples.html">Сквозные примеры</a></li>
+          <li><a href="docs/glossary.html">Глоссарий параметров</a></li>
         </ul>
       </div>
     </div>

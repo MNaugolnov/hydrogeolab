@@ -635,3 +635,10 @@ footer{
   background: var(--sage-50); border: 1px solid var(--sage-200);
   padding: 6px 14px; border-radius: var(--radius-pill);
 }
+
+/* links to the function library from product pages */
+.card h3 a, .section-head h2 a, h3 a{ text-decoration: underline; text-decoration-color: var(--sage-300); text-underline-offset: 4px; }
+.card h3 a:hover, .section-head h2 a:hover, h3 a:hover{ color: var(--sage-700); }
+td.yes a{ color: var(--sage-700); display: inline-block; min-width: 28px; border-radius: 6px; }
+td.yes a:hover{ background: var(--sage-100); }
+.pill-note a{ color: var(--sage-800); text-decoration: underline; }
