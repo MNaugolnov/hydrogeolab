@@ -137,7 +137,7 @@ svg{ display: block; }
   gap: 20px;
 }
 .brand{ display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.brand img{ height: 30px; width: auto; }
+.brand img{ height: 36px; width: 36px; }
 .brand-word{
   font-family: var(--font-head);
   font-weight: 700;

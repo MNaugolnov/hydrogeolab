@@ -6,7 +6,7 @@ const { H, tex, esc, layout, crumbs, TOOLS, fmtVal, ru, BYNAME, capital } = D;
 const OUT = path.join(__dirname, '..', 'docs');
 fs.mkdirSync(path.join(OUT, 'tools'), { recursive: true });
 const R2 = '../../';
-const fnLinks = (names, root) => `<div class="rel-grid">${names.map(n => `<a class="rel" href="${root}docs/f/${n}.html"><code>${n}</code><span>${esc(BYNAME[n].title)}</span></a>`).join('')}</div>`;
+const fnLinks = (names, root) => `<div class="rel-grid">${names.map(n => `<a class="rel" href="${root}docs/f/${n}.html"><b>${esc(BYNAME[n].navLabel)}</b><code>${n}</code></a>`).join('')}</div>`;
 const shot = (file, alt, cap, cls) => `<figure class="shot-frame${cls ? ' ' + cls : ''}"><img src="${R2}assets/img/screens/${file}" alt="${esc(alt)}" loading="lazy"></figure>${cap ? `<p class="shot-caption">${esc(cap)}</p>` : ''}`;
 function toolPage(key, title, lead, body) {
   const T = TOOLS[key];

@@ -85,9 +85,9 @@ const resMod = META.MODULES.find(m => m.id === 'reserves');
 const infMod = META.MODULES.find(m => m.id === 'inflow');
 META.SCHEMES.forEach(s => {
   resMod.sections.push({ id: 'r-' + s.id, title: s.title, sub: s.sub, menu: ['Оценка запасов', 'Типовые схемы', 'Гидродинамический метод'],
-    fns: [schemeFn('drawdown', true, s), schemeFn('drawdown', false, s)] });
+    fns: [schemeFn('drawdown', false, s), schemeFn('drawdown', true, s)] });
   if (!s.reservesOnly) infMod.sections.push({ id: 'i-' + s.id, title: s.title, sub: s.sub, menu: ['Оценка водопритоков', 'Типовые схемы', 'Гидродинамический метод'],
-    fns: [schemeFn('discharge', true, s), schemeFn('discharge', false, s)] });
+    fns: [schemeFn('discharge', false, s), schemeFn('discharge', true, s)] });
 });
 infMod.sections.push({ id: 'i-bottom', title: 'Перетекание через дно', menu: ['Оценка водопритоков', 'Типовые схемы', 'Гидродинамический метод', 'Перетекание через дно'], fns: ['bottom_overflow'] });
 infMod.sections.push({ id: 'i-atm', title: 'Атмосферные осадки', menu: ['Оценка водопритоков', 'Атмосферные осадки'],
@@ -105,6 +105,28 @@ META.MODULES.forEach(mod => mod.sections.forEach(sec => sec.fns.forEach(fn => {
   ALL.push(f);
 })));
 const BYNAME = Object.fromEntries(ALL.map(f => [f.name, f]));
+// Названия пунктов меню — как на ленте «Гидрогеология v.02»
+const LABELS = {
+  par_T: 'Водопроводимость T', levelcond: 'Уровнепроводность a', levelcond_star: 'Пьезопроводность a*',
+  mu_star: 'Коэффициент упругой водоотдачи μ*', par_B: 'Параметр перетекания B', par_B2: 'Параметр перетекания B (два пласта)',
+  Kxy_avg: 'Средний Кф анизотропного пласта', Kh_bulk: 'Приведённый Кф слоистой толщи (гор.)', Kv_bulk: 'Приведённый Кф слоистой толщи (верт.)',
+  density: 'Плотность',
+  r_bigwell_line: 'Линейный ряд / линейная дрена', r_bigwell_area: 'Площадная система (L/B > 3)',
+  r_bigwell_rectangle: 'Прямоугольная (вытянутый прямоугольник)', r_bigwell_circle: 'Кольцевая / круг',
+  r_bigwell_validity_noboundaries: 'Неограниченный в плане пласт', r_bigwell_validity_boundaries: 'Ограниченный в плане пласт',
+  bigwell_center_x: 'Координата X центра тяжести', bigwell_center_y: 'Координата Y центра тяжести', bigwell_center: 'Координаты центра тяжести {x₀; y₀}',
+  well_0b_0f: 'Сосредоточенный водозабор, без естественного потока', well_0b: 'Сосредоточенный водозабор, с естественным потоком',
+  line_0b_0f: 'Линейный водозабор, без естественного потока', line_0b: 'Линейный водозабор, с естественным потоком',
+  bottom_overflow: 'Перетекание через дно',
+  rain_norm: 'Нормальный приток дождевых вод', meltwater: 'Нормальный приток талых вод', stormwater: 'Приток ливневых вод', intensity_stormwater: 'Интенсивность ливневого дождя',
+  type_M: 'Тип воды по минерализации', type_pH: 'Тип воды по pH',
+  Distance3D: 'Функция расстояния', DMStoDD: 'ГМС → десятичные градусы', DDtoDMS: 'Десятичные градусы → ГМС',
+};
+META.SCALES.forEach(([c, l]) => { LABELS['MapSheet' + c] = 'Масштаб ' + l; });
+ALL.forEach(f => {
+  f.label = LABELS[f.name] || (f.scheme ? f.short.charAt(0).toUpperCase() + f.short.slice(1) : f.title);
+  f.navLabel = f.scheme ? f.scheme.title + ': ' + f.short : f.label;
+});
 
 // ----------------------------------------------------------------------------- example evaluation
 const ROOTS = { f: '../../', tools: '../../', docs: '../' };
@@ -212,7 +234,7 @@ function nav(root) {
   return `<header class="nav is-light">
   <div class="nav-inner">
     <a href="${root}index.html" class="brand">
-      <img src="${root}assets/img/logo.png" alt="Cenozoic">
+      <img src="${root}assets/img/logo-mark.png" alt="">
       <span class="brand-word">CENOZOIC</span>
     </a>
     <nav class="nav-links" id="navLinks">
@@ -238,7 +260,7 @@ function footer(root) {
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="${root}index.html" class="brand">
-          <img src="${root}assets/img/logo.png" alt="Cenozoic">
+          <img src="${root}assets/img/logo-mark.png" alt="">
           <span class="brand-word">CENOZOIC</span>
         </a>
         <p>Инженерный софт для гидрогеологического моделирования, изысканий, мониторинга подземных вод и оценки притоков.</p>
@@ -310,7 +332,7 @@ function sidebar(root, current) {
     mod.sections.forEach(sec => {
       out += `    <div class="side-sec">${esc(sec.title)}</div>\n`;
       sec.fns.forEach(fn => {
-        out += `    <a class="side-fn${fn === current ? ' on' : ''}" href="${root}docs/f/${fn}.html" data-k="${esc((fn + ' ' + BYNAME[fn].title).toLowerCase())}">${fn}</a>\n`;
+        out += `    <a class="side-fn${fn === current ? ' on' : ''}" href="${root}docs/f/${fn}.html" data-k="${esc((fn + ' ' + BYNAME[fn].title + ' ' + BYNAME[fn].label).toLowerCase())}" title="${fn}">${esc(BYNAME[fn].label)}</a>\n`;
       });
     });
     out += '  </details>\n';
@@ -372,7 +394,7 @@ function fnPage(f, idx, list) {
   const labels = f.result.labels ? `<ol class="res-labels">${f.result.labels.map(l => `<li>${esc(l)}</li>`).join('')}</ol>` : '';
   const notes = (f.notes || []).map(n => `<li>${esc(n)}</li>`).join('');
   const std = `<li><b>#ЗНАЧ!</b> — один из аргументов не является числом.</li><li><b>#ДЕЛ/0!</b> — нулевой знаменатель (например, k = 0 или m = 0).</li><li><b>#ЧИСЛО!</b> — недопустимые значения: отрицательное подкоренное выражение, логарифм от неположительного числа.</li>`;
-  const rel = (f.related || []).filter(r => BYNAME[r]).map(r => `<a class="rel" href="${r}.html"><code>${r}</code><span>${esc(BYNAME[r].title)}</span></a>`).join('');
+  const rel = (f.related || []).filter(r => BYNAME[r]).map(r => `<a class="rel" href="${r}.html"><b>${esc(BYNAME[r].navLabel)}</b><code>${r}</code></a>`).join('');
   const prev = list[idx - 1], next = list[idx + 1];
   const calc = {
     fn: f.name, array: !!f.array, labels: f.result.labels || null, unit: f.result.unit,
@@ -380,11 +402,11 @@ function fnPage(f, idx, list) {
     range: f.range || null,
   };
   const extra = f.extraTable ? `<h3 class="d-h3">${esc(f.extraTable.caption)}</h3><div class="table-wrap"><table><thead><tr>${f.extraTable.head.map(h => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${f.extraTable.rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>` : '';
-  const main = `${crumbs(root, [[mod.title, root + 'docs/index.html#m-' + mod.id], [sec.title, root + 'docs/index.html#s-' + sec.id], [f.name]])}
+  const main = `${crumbs(root, [[mod.title, root + 'docs/index.html#m-' + mod.id], [sec.title, root + 'docs/index.html#s-' + sec.id], [f.label]])}
 <header class="fn-head">
   <div class="fn-kicker"><span class="side-n">${mod.n}</span>${esc(mod.title)}</div>
-  <h1><code>${f.name}</code></h1>
-  <p class="fn-title">${esc(f.title)} ${kind}</p>
+  <h1>${esc(f.title)}</h1>
+  <p class="fn-title"><code class="fn-code">${f.name}</code> ${kind}</p>
   <p class="fn-sum">${esc(f.summary)}</p>
 </header>
 
@@ -432,7 +454,7 @@ function fnPage(f, idx, list) {
 ${rel ? `<section class="d-block"><h2 class="d-h2">Связанные функции</h2><div class="rel-grid">${rel}</div></section>` : ''}
 ${f.sources ? `<section class="d-block"><h2 class="d-h2">Источники</h2><p class="src">${esc(f.sources)}</p></section>` : ''}
 
-<nav class="pn">${prev ? `<a href="${prev.name}.html" class="pn-prev"><small>← Предыдущая</small><code>${prev.name}</code></a>` : '<span></span>'}${next ? `<a href="${next.name}.html" class="pn-next"><small>Следующая →</small><code>${next.name}</code></a>` : '<span></span>'}</nav>`;
+<nav class="pn">${prev ? `<a href="${prev.name}.html" class="pn-prev"><small>← Предыдущая</small><b>${esc(prev.navLabel)}</b><code>${prev.name}</code></a>` : '<span></span>'}${next ? `<a href="${next.name}.html" class="pn-next"><small>Следующая →</small><b>${esc(next.navLabel)}</b><code>${next.name}</code></a>` : '<span></span>'}</nav>`;
   return layout(root, f.name, `${f.name} — ${f.title}`, f.summary, main);
 }
 
@@ -478,7 +500,7 @@ function indexPage() {
       cards += `<div class="lib-sec" id="s-${sec.id}"><h3>${esc(sec.title)}${sec.sub ? `<small>${esc(sec.sub)}</small>` : ''}</h3>${sec.intro ? `<p class="muted small">${esc(sec.intro)}</p>` : ''}<div class="lib-fns">`;
       sec.fns.forEach(fn => {
         const f = BYNAME[fn];
-        cards += `<a class="lib-fn" href="f/${fn}.html" data-k="${esc((fn + ' ' + f.title + ' ' + f.summary).toLowerCase())}"><code>${fn}</code><span>${esc(f.scheme ? capital(f.short) : f.title)}</span></a>`;
+        cards += `<a class="lib-fn" href="f/${fn}.html" data-k="${esc((fn + ' ' + f.label + ' ' + f.title + ' ' + f.summary).toLowerCase())}"><b>${esc(f.label)}</b><code>${fn}</code></a>`;
       });
       cards += '</div></div>';
     });
