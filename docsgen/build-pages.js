@@ -109,7 +109,7 @@ const R1 = '../';
 const start = `${crumbs(R1, [['Как пользоваться']])}
 <header class="fn-head"><h1>Как пользоваться надстройкой</h1>
 <p class="fn-sum">Все инструменты собраны на одной вкладке ленты Excel — <b>«Гидрогеология v.02»</b>. Вкладка разбита на шесть групп кнопок: Расчётные параметры, ЗСО, Оценка запасов, Оценка водопритоков, Гидрохимия и Вспомогательные инструменты.</p></header>
-<div class="shot-frame"><img src="${R1}assets/img/screens/ribbon-overview.png" alt="Вкладка «Гидрогеология v.02» на ленте Excel"></div>
+<div class="shot-frame"><img src="${R1}assets/img/screens/ribbon-overview.png" alt="Вкладка «HydroGeoLab» на ленте Excel"></div>
 
 <section class="d-block"><h2 class="d-h2">Подключение</h2>
 <ol class="steps"><li>Прототип поставляется файлом Excel с макросами (<code>hydro_proto_v_0_2.xlsm</code>). Откройте его и нажмите «Включить содержимое» — на ленте появится вкладка «Гидрогеология v.02».</li>
