@@ -111,9 +111,13 @@ const start = `${crumbs(R1, [['Как пользоваться']])}
 <p class="fn-sum">Все инструменты собраны на одной вкладке ленты Excel — <b>«Гидрогеология v.02»</b>. Вкладка разбита на шесть групп кнопок: Расчётные параметры, ЗСО, Оценка запасов, Оценка водопритоков, Гидрохимия и Вспомогательные инструменты.</p></header>
 <div class="shot-frame"><img src="${R1}assets/img/screens/ribbon-overview.png" alt="Вкладка «HydroGeoLab» на ленте Excel"></div>
 
-<section class="d-block"><h2 class="d-h2">Подключение</h2>
-<ol class="steps"><li>Прототип поставляется файлом Excel с макросами (<code>hydro_proto_v_0_2.xlsm</code>). Откройте его и нажмите «Включить содержимое» — на ленте появится вкладка «Гидрогеология v.02».</li>
-<li>Для постоянной работы надстройку в формате <code>.xlam</code> подключают через <b>Файл → Параметры → Надстройки → Управление: Надстройки Excel → Перейти → Обзор</b>. Тогда вкладка доступна в любой книге.</li></ol></section>
+<section class="d-block" id="install"><h2 class="d-h2">Установка</h2>
+<div class="dl-box"><div><b>HydroGeoLab — установщик надстройки Excel</b><span>Версия 0.3.4 · Windows 7 SP1 и новее · Excel 2010–365 (32 и 64 бит) · 2,7 МБ</span></div><a href="${R1}downloads/HydroGeoLab-Setup.exe" class="btn btn-primary" download>Скачать</a></div>
+<ol class="steps"><li>Скачайте <code>HydroGeoLab-Setup.exe</code> и запустите его. Права администратора не нужны: надстройка ставится в папку пользователя (<code>%LOCALAPPDATA%\\Programs\\Cenozoic\\HydroGeoLab</code>).</li>
+<li>Если Excel открыт, установщик попросит сохранить книги и закрыть его.</li>
+<li>Оставьте отмеченным пункт «Подключить надстройку в Excel» — установщик сам определит разрядность Excel (32 или 64 бит) и подключит нужную версию.</li>
+<li>Запустите Excel — на ленте появится вкладка <b>HydroGeoLab</b>.</li></ol>
+<p class="muted small">Для работы нужен .NET Framework 4.8 — в Windows 10 (версия 1903 и новее) и Windows 11 он уже есть; если его нет, установщик предупредит. Удалить надстройку можно через «Параметры Windows → Приложения»: при удалении она отключается в Excel. Windows может показать предупреждение SmartScreen, так как установщик пока не подписан, — нажмите «Подробнее → Выполнить в любом случае».</p></section>
 
 <section class="d-block"><h2 class="d-h2">Два способа работы</h2>
 <div class="grid grid-2">

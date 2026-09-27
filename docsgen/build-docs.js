@@ -245,7 +245,7 @@ function nav(root) {
       <a href="${root}company.html">Компания</a>
     </nav>
     <div class="nav-cta">
-      <a href="${root}company.html#contact" class="btn btn-dark btn-sm btn-sm-hide">Написать нам</a>
+      <a href="${root}downloads/HydroGeoLab-Setup.exe" class="btn btn-dark btn-sm" download title="Версия 0.3.4 · Windows 7 SP1 и новее · Excel 2010–365 (32 и 64 бит) · 2,7 МБ">Скачать</a>
       <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
         <span data-icon="menu" style="width:20px;height:20px;display:block"></span>
       </button>

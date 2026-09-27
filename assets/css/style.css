@@ -642,3 +642,6 @@ footer{
 td.yes a{ color: var(--sage-700); display: inline-block; min-width: 28px; border-radius: 6px; }
 td.yes a:hover{ background: var(--sage-100); }
 .pill-note a{ color: var(--sage-800); text-decoration: underline; }
+
+.hero-dl{ margin-top: 16px; font-size: 13.5px; color: var(--ink-300); }
+.hero-dl a{ color: var(--sage-300); text-decoration: underline; text-underline-offset: 3px; }

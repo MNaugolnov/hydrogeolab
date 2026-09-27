@@ -280,3 +280,10 @@ a.gl{ text-decoration: none; font-size: 12px; }
 .fn-code{ font-size: 15px; font-weight: 600; color: var(--sage-800); background: var(--sage-50); border: 1px solid var(--sage-200); border-radius: 8px; padding: 3px 10px; }
 .lib-fn b, .rel b, .pn b{ font-weight: 700; font-size: 14px; color: var(--text-dark); line-height: 1.35; }
 .lib-fn code, .rel code, .pn code{ font-size: 12px; font-weight: 500; color: var(--text-mute); }
+
+/* download box (start page) */
+.dl-box{ display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  background: var(--sage-50); border: 1px solid var(--sage-200); border-radius: var(--radius-md); padding: 18px 20px; margin-bottom: 18px; }
+.dl-box div{ display: flex; flex-direction: column; gap: 4px; }
+.dl-box span{ font-size: 13.5px; color: var(--text-mute); }
+.d-block{ scroll-margin-top: 84px; }
