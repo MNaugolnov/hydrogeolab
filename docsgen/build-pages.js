@@ -112,8 +112,8 @@ const start = `${crumbs(R1, [['Как пользоваться']])}
 <div class="shot-frame"><img src="${R1}assets/img/screens/ribbon-overview.png" alt="Вкладка «HydroGeoLab» на ленте Excel"></div>
 
 <section class="d-block" id="install"><h2 class="d-h2">Установка</h2>
-<div class="dl-box"><div><b>HydroGeoLab — установщик надстройки Excel</b><span>Версия 0.3.4 · Windows 7 SP1 и новее · Excel 2010–365 (32 и 64 бит) · 2,7 МБ</span></div><a href="${R1}downloads/HydroGeoLab-Setup.exe" class="btn btn-primary" download>Скачать</a></div>
-<ol class="steps"><li>Скачайте <code>HydroGeoLab-Setup.exe</code> и запустите его. Права администратора не нужны: надстройка ставится в папку пользователя (<code>%LOCALAPPDATA%\\Programs\\Cenozoic\\HydroGeoLab</code>).</li>
+<div class="dl-box"><div><b>HydroGeoLab — установщик надстройки Excel</b><span>Версия 0.3.7 · Windows 7 SP1 и новее · Excel 2010–365 (32 и 64 бит) · 2,7 МБ</span></div><a href="${R1}downloads/setup.exe" class="btn btn-primary" download>Скачать</a></div>
+<ol class="steps"><li>Скачайте <code>setup.exe</code> и запустите его. Права администратора не нужны: надстройка ставится в папку пользователя (<code>%LOCALAPPDATA%\\Programs\\Cenozoic\\HydroGeoLab</code>).</li>
 <li>Если Excel открыт, установщик попросит сохранить книги и закрыть его.</li>
 <li>Оставьте отмеченным пункт «Подключить надстройку в Excel» — установщик сам определит разрядность Excel (32 или 64 бит) и подключит нужную версию.</li>
 <li>Запустите Excel — на ленте появится вкладка <b>HydroGeoLab</b>.</li></ol>
